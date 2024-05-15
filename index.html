@@ -75,6 +75,7 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <a href="#" onclick="ShowText('Made by Micheal Fu')">Show Text</a>
     <a href="#" onclick="Refresh()">Refresh</a>
+    <a href="#" onclick="PlayMusic()">Play Music</a>
   </div>
 
   <!-- Main content -->
@@ -111,7 +112,6 @@
     }
 
     document.getElementById("menu-toggle").addEventListener("click", function () {
-      console.log("AAAA")
       if (getComputedStyle(document.getElementById("mySidebar")).left === "-250px") {
         openNav();
       } else {

@@ -37,7 +37,6 @@ function setup() {
   textAlign(CENTER, CENTER);
   textSize(32);
   canvasImg=createImage(width, height)
-  sound.loop()
 }
 
 function draw() {
@@ -100,7 +99,6 @@ function ShowText(newMessage) {
 }
 
 function Refresh(){
-  console.log("ABC")
   background(0)
   canvasImg = createImage(width,height)
   canvasImg.loadPixels(); // 加載圖像像素數據
@@ -108,4 +106,9 @@ function Refresh(){
   randomSeed()
   colors[0] = color(random(130)+15, 90, 90, random(25, 50));
   colors[1] = color(random(150)+175, 90, 90, random(25, 50));
+}
+
+function PlayMusic(){
+  sound.stop()
+  sound.loop()
 }
