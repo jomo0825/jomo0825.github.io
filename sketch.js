@@ -19,7 +19,7 @@ let sound
 
 function preload() {
   // 在 preload() 函數中加載 MP3 文件
-  sound = loadSound('sound/great_compassion.mp3');
+  sound = loadSound('https://github.com/jomo0825/jomo0825.github.io/blob/main/sound/great_compassion.mp3');
 }
 
 function setup() {
