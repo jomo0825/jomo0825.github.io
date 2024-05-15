@@ -15,6 +15,13 @@ let message = "Hello, p5.js!";
 let fadeIn = false; // 淡入狀態
 let canvasImg;
 
+let sound
+
+function preload() {
+  // 在 preload() 函數中加載 MP3 文件
+  sound = loadSound('sound/great_compassion.mp3');
+}
+
 function setup() {
   mySize = min(windowWidth, windowHeight);
   // pixelDensity(5);
@@ -30,6 +37,7 @@ function setup() {
   textAlign(CENTER, CENTER);
   textSize(32);
   canvasImg=createImage(width, height)
+  sound.loop()
 }
 
 function draw() {
