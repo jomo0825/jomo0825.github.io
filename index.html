@@ -111,7 +111,8 @@
     }
 
     document.getElementById("menu-toggle").addEventListener("click", function () {
-      if (document.getElementById("mySidebar").style.left === "-250px") {
+      console.log("AAAA")
+      if (getComputedStyle(document.getElementById("mySidebar")).left === "-250px") {
         openNav();
       } else {
         closeNav();
