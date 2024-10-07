@@ -28,7 +28,7 @@ function preload() {
 function setup() {
   createCanvas(600, 600);
   frameRate(60);
-  fft = new p5.FFT(1.0,8192);
+  fft = new p5.FFT(1.0,4096);
   //audio.play();
 }
 
