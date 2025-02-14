@@ -7,16 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Interactive Programming Design</title>
     <!-- Font Links -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&family=VT323&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&family=VT323&display=swap"
+        rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"> -->
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="css/myStyle.css">
-    <!-- Theme Stylesheets -->
-    <link rel="stylesheet" href="css/darkMode.css">
+    <link rel="stylesheet" href="css/darkMode.css"> <!-- Load darkMode.css first -->
     <link rel="stylesheet" href="css/darkModeBlue.css">
     <link rel="stylesheet" href="css/darkModeHiContrast.css">
     <link rel="stylesheet" href="css/cyberpunkNeon.css">
     <link rel="stylesheet" href="css/cyberpunkHolo.css">
     <link rel="stylesheet" href="css/cyberpunkMatrix.css">
+    <link rel="stylesheet" href="css/crimsonEmber.css">
+    <link rel="stylesheet" href="css/electricIndigo.css">
+    <link rel="stylesheet" href="css/emeraldGlow.css">
+    <link rel="stylesheet" href="css/superVibrant.css">
+    <link rel="stylesheet" href="css/myStyle.css"> <!-- Load myStyle.css after -->
+    <!-- Theme Stylesheets -->
     <style>
         /* Optional: Smooth Transitions for Common Elements */
         body,
@@ -50,17 +57,29 @@
                 <!-- Theme Switcher Dropdown -->
                 <div class="dropdown">
                     <button class="dropdown-toggle" id="themeDropdown">
-                        Select Theme ▼
-                    </button>
+                        Select Theme ▼</button>
                     <ul class="dropdown-menu" id="themeDropdownMenu">
                         <li><button class="dropdown-item" onclick="setTheme('dark-mode-1')">Classic Dark</button></li>
-                        <li><button class="dropdown-item" onclick="setTheme('dark-mode-2')">Blue-Toned Dark</button></li>
-                        <li><button class="dropdown-item" onclick="setTheme('dark-mode-3')">High Contrast Dark</button></li>
-                        <li><hr class="divider"></li>
+                        <!-- <li><button class="dropdown-item" onclick="setTheme('dark-mode-2')">Dark Blue</button></li> -->
                         <li><button class="dropdown-item" onclick="setTheme('cyberpunk-1')">Neon Cyberpunk</button></li>
-                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-2')">Holographic Cyberpunk</button></li>
-                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-3')">Matrix Cyberpunk</button></li>
-                        <li><hr class="divider"></li>
+                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-2')">Holographic
+                                Cyberpunk</button></li>
+                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-3')">Matrix Cyberpunk</button>
+                        </li>
+                        <li>
+                            <hr class="divider">
+                        </li>
+                        <!-- <li><button class="dropdown-item" onclick="setTheme('crimson-ember')">Crimson Ember</button>
+                        </li> -->
+                        <li><button class="dropdown-item" onclick="setTheme('electric-indigo')">Electric Indigo</button>
+                        </li>
+                        <li><button class="dropdown-item" onclick="setTheme('emerald-glow')">Emerald Glow</button>
+                        </li>
+                        <li><button class="dropdown-item" onclick="setTheme('super-vibrant')">Super Vibrant</button>
+                        </li>
+                        <li>
+                            <hr class="divider">
+                        </li>
                         <li><button class="dropdown-item" onclick="setTheme('')">Light Mode</button></li>
                     </ul>
                 </div>
@@ -72,7 +91,9 @@
     <!-- Full-width Video Banner -->
     <div class="video-banner" id="home">
         <video autoplay muted loop>
-            <source src="https://raw.githubusercontent.com/jomo0825/jomo0825.github.io/master/video/346712815644274692.mp4" type="video/mp4">
+            <source
+                src="https://raw.githubusercontent.com/jomo0825/jomo0825.github.io/master/video/346330714855940096.mp4"
+                type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="overlay">
@@ -128,7 +149,7 @@
                 <thead>
                     <tr>
                         <th>Criteria</th>
-                        <th>Percentage (%)</th>
+                        <th>%</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -228,7 +249,7 @@
     <!-- Message Form -->
     <section id="contact" class="section">
         <div class="container">
-            <h2>Get in Touch</h2>
+            <h2>Ask a Question</h2>
             <form class="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>

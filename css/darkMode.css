@@ -20,6 +20,7 @@ body.dark-mode-1 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 body.dark-mode-1 .navbar-brand {
@@ -80,9 +81,9 @@ body.dark-mode-1 .dropdown-menu {
     z-index: 1;
     border-radius: 4px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
-/* Show dropdown when active */
 body.dark-mode-1 .dropdown-menu.active {
     display: block;
 }
@@ -101,6 +102,7 @@ body.dark-mode-1 .dropdown-menu .dropdown-item:hover {
     color: #ffffff;
 }
 
+/* Divider Styles */
 body.dark-mode-1 .divider {
     height: 1px;
     background-color: #444444;
@@ -144,7 +146,7 @@ body.dark-mode-1 .video-banner .overlay p {
     font-size: 1.5em;
 }
 
-body.dark-mode-1 .section {
+body.dark-mode-1 section {
     padding: 60px 20px;
 }
 
@@ -320,8 +322,34 @@ body.dark-mode-1 .list-group-item:active {
     background-color: #555555;
 }
 
-/* Dropdown Menu Active State - Ensures it's visible when 'active' is added */
-.dropdown-menu.active {
-    display: block;
+/* Responsive Navbar Styles within Dark Mode */
+@media (max-width: 768px) {
+    /* Show toggler on mobile */
+    body.dark-mode-1 .navbar-toggler {
+        display: block;
+    }
+
+    /* Hide navbar links by default on mobile */
+    body.dark-mode-1 .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        background-color: #1f1f1f; /* Match dark theme */
+        padding: 10px 0;
+        z-index: 999; /* Ensure it appears above other elements */
+    }
+
+    /* Show navbar links when active */
+    body.dark-mode-1 .navbar-links.active {
+        display: flex;
+    }
+
+    /* Navbar links styling on mobile */
+    body.dark-mode-1 .navbar-links .nav-link {
+        padding: 10px 20px;
+    }
 }
 

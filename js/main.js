@@ -1,4 +1,5 @@
 /* main.js */
+const defaultTheme = "dark-mode-1";
 
 /* Navbar Toggler */
 const navbarToggler = document.getElementById('navbarToggler');
@@ -50,7 +51,9 @@ function toggleAccordion(id) {
 /* Theme Switcher */
 function setTheme(themeName) {
     // Remove existing theme classes
-    const themes = ['dark-mode-1', 'dark-mode-2', 'dark-mode-3', 'cyberpunk-1', 'cyberpunk-2', 'cyberpunk-3'];
+    const themes = ['dark-mode-1', 'dark-mode-2', 'dark-mode-3', 'cyberpunk-1', 'cyberpunk-2', 'cyberpunk-3',
+        'emerald-glow', 'electric-indigo', 'crimson-ember', 'super-vibrant'
+    ];
     themes.forEach((theme) => {
         document.body.classList.remove(theme);
     });
@@ -70,6 +73,9 @@ function setTheme(themeName) {
 window.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-        document.body.classList.add(savedTheme);
+        setTheme(savedTheme);
+    }
+    else{
+        setTheme(`${defaultTheme}`);
     }
 });

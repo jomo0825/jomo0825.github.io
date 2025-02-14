@@ -1,0 +1,355 @@
+/* crimsonEmber.css */
+
+/* Crimson Ember Theme */
+body.crimson-ember {
+    background-color: #1a0d0d; /* Dark Red Background */
+    color: #f5f5f5; /* Light Text */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styles */
+body.crimson-ember .navbar {
+    background-color: #330000; /* Dark Maroon */
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+body.crimson-ember .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+body.crimson-ember .navbar-brand {
+    font-size: 1.5em;
+    color: #ff4d4d; /* Bright Red */
+    text-decoration: none;
+}
+
+body.crimson-ember .navbar-toggler {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: #ff4d4d; /* Bright Red */
+    cursor: pointer;
+    display: none; /* Hidden on larger screens */
+}
+
+body.crimson-ember .navbar-links {
+    display: flex;
+    gap: 15px;
+}
+
+body.crimson-ember .navbar-links .nav-link {
+    color: #f5f5f5; /* Light Text */
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.crimson-ember .navbar-links .nav-link.active,
+body.crimson-ember .navbar-links .nav-link:hover {
+    background-color: #660000; /* Dark Red */
+    color: #ffffff; /* White Text */
+}
+
+/* Dropdown Menu Styles */
+body.crimson-ember .dropdown-toggle {
+    background-color: #660000; /* Dark Red */
+    color: #ff4d4d; /* Bright Red */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+body.crimson-ember .dropdown-toggle:hover {
+    background-color: #800000; /* Maroon */
+}
+
+body.crimson-ember .dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #330000; /* Dark Maroon */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+body.crimson-ember .dropdown-menu.active {
+    display: block;
+}
+
+body.crimson-ember .dropdown-menu .dropdown-item {
+    color: #ff4d4d; /* Bright Red */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.crimson-ember .dropdown-menu .dropdown-item:hover {
+    background-color: #4d0000; /* Dark Red */
+    color: #ffffff; /* White Text */
+}
+
+/* Divider Styles */
+body.crimson-ember .divider {
+    height: 1px;
+    background-color: #4d0000; /* Dark Red */
+    margin: 5px 0;
+}
+
+/* Video Banner Styles */
+body.crimson-ember .video-banner {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+body.crimson-ember .video-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.crimson-ember .video-banner .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 13, 13, 0.7); /* Semi-transparent Dark Red */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f5f5f5; /* Light Text */
+}
+
+body.crimson-ember .video-banner .overlay h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+body.crimson-ember .video-banner .overlay p {
+    font-size: 1.5em;
+}
+
+/* Section Styles */
+body.crimson-ember section {
+    padding: 60px 20px;
+}
+
+body.crimson-ember .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+body.crimson-ember h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff; /* White Text */
+}
+
+body.crimson-ember .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+body.crimson-ember .skills-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+body.crimson-ember .skills-list li {
+    margin-bottom: 10px;
+}
+
+body.crimson-ember .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+body.crimson-ember .custom-table thead {
+    background-color: #1f1f1f; /* Dark Background */
+    color: #e0e0e0; /* Light Text */
+}
+
+body.crimson-ember .custom-table th,
+body.crimson-ember .custom-table td {
+    padding: 12px;
+    border: 1px solid #444444; /* Dark Border */
+    text-align: left;
+}
+
+body.crimson-ember .custom-table tbody tr:nth-of-type(odd) {
+    background-color: #2c2c2c; /* Dark Gray */
+}
+
+body.crimson-ember .custom-table tbody tr:nth-of-type(even) {
+    background-color: #1e1e1e; /* Very Dark Gray */
+}
+
+body.crimson-ember .custom-table tbody tr:hover {
+    background-color: #333333; /* Dark Gray */
+}
+
+body.crimson-ember .accordion {
+    margin-top: 20px;
+}
+
+body.crimson-ember .accordion-item {
+    border: 1px solid #444444; /* Dark Border */
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+body.crimson-ember .accordion-header {
+    background-color: #1f1f1f; /* Dark Background */
+    color: #e0e0e0; /* Light Text */
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.crimson-ember .accordion-header:hover {
+    background-color: #333333; /* Dark Gray */
+}
+
+body.crimson-ember .accordion-content {
+    background-color: #2c2c2c; /* Dark Gray */
+    padding: 15px;
+}
+
+body.crimson-ember .card {
+    background-color: #1e1e1e; /* Very Dark Gray */
+    border: 1px solid #444444; /* Dark Border */
+    border-radius: 4px;
+    padding: 15px;
+}
+
+body.crimson-ember .card-title {
+    margin-bottom: 10px;
+    color: #ffffff; /* White Text */
+}
+
+body.crimson-ember .card-text {
+    color: #e0e0e0; /* Light Text */
+}
+
+body.crimson-ember .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+body.crimson-ember .form-group {
+    margin-bottom: 15px;
+}
+
+body.crimson-ember .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #e0e0e0; /* Light Text */
+}
+
+body.crimson-ember .form-control {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c2c2c; /* Dark Gray */
+    color: #e0e0e0; /* Light Text */
+    border: 1px solid #444444; /* Dark Border */
+    border-radius: 4px;
+}
+
+body.crimson-ember .form-control::placeholder {
+    color: #aaaaaa; /* Gray Placeholder */
+}
+
+body.crimson-ember .btn-primary {
+    background-color: #bb86fc; /* Light Purple */
+    border: none;
+    padding: 10px 20px;
+    color: #ffffff; /* White Text */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+body.crimson-ember .btn-primary:hover {
+    background-color: #a676f1; /* Slightly Darker Purple */
+}
+
+body.crimson-ember footer {
+    background-color: #1f1f1f; /* Dark Background */
+    color: #e0e0e0; /* Light Text */
+    text-align: center;
+    padding: 20px;
+}
+
+body.crimson-ember .list-group-item {
+    background-color: #2c2c2c; /* Dark Gray */
+    color: #e0e0e0; /* Light Text */
+    border: 1px solid #444444; /* Dark Border */
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.crimson-ember .list-group-item:hover {
+    background-color: #444444; /* Dark Border Hover */
+    color: #ffffdd; /* Light Yellow Text */
+}
+
+body.crimson-ember .list-group-item:active {
+    background-color: #555555; /* Darker Gray */
+}
+
+/* Responsive Navbar Styles within Crimson Ember Theme */
+@media (max-width: 768px) {
+    /* Show toggler on mobile */
+    body.crimson-ember .navbar-toggler {
+        display: block;
+    }
+
+    /* Hide navbar links by default on mobile */
+    body.crimson-ember .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        background-color: #1f1f1f; /* Match dark theme */
+        padding: 10px 0;
+        z-index: 999; /* Ensure it appears above other elements */
+    }
+
+    /* Show navbar links when active */
+    body.crimson-ember .navbar-links.active {
+        display: flex;
+    }
+
+    /* Navbar links styling on mobile */
+    body.crimson-ember .navbar-links .nav-link {
+        padding: 10px 20px;
+    }
+}

@@ -1,0 +1,706 @@
+/* superVibrant.css */
+
+/* Super Vibrant Theme */
+body.super-vibrant {
+    background: linear-gradient(55deg, #0f0c29, #302b63, #ff589d);
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    /* animation: backgroundShift 15s ease infinite; */
+}
+
+/* Keyframe for Background Gradient Shift */
+@keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.super-vibrant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://raw.githubusercontent.com/jomo0825/jomo0825.github.io/master/images/particles.png') repeat;
+    opacity: 0.1;
+    z-index: 0;
+    /* animation: particlesMove 60s linear infinite; */
+}
+
+@keyframes particlesMove {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-1000px, -1000px); }
+}
+
+/* Ensure content appears above the ::before pseudo-element */
+body.super-vibrant > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Navbar Styles */
+body.super-vibrant .navbar {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 20px;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #ff00ff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: relative; /* Ensure positioning for z-index */
+    z-index: 1001; /* Higher than video banner */
+}
+
+body.super-vibrant .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+body.super-vibrant .navbar-brand {
+    font-size: 1.8em;
+    color: #ff00ff;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+body.super-vibrant .navbar-brand::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00ffff;
+    transition: width 0.3s ease;
+}
+
+body.super-vibrant .navbar-brand:hover::after {
+    width: 100%;
+}
+
+body.super-vibrant .navbar-toggler {
+    font-size: 1.8em;
+    background: none;
+    border: none;
+    color: #ff00ff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+body.super-vibrant .navbar-toggler:hover {
+    transform: rotate(90deg);
+}
+
+body.super-vibrant .navbar-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+body.super-vibrant .navbar-links .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+body.super-vibrant .navbar-links .nav-link::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, #ff00ff, transparent);
+    transition: all 0.5s ease;
+}
+
+body.super-vibrant .navbar-links .nav-link:hover::before {
+    left: 0;
+}
+
+body.super-vibrant .navbar-links .nav-link:hover {
+    color: #ff00ff;
+}
+
+/* Dropdown Menu Styles */
+body.super-vibrant .dropdown-toggle {
+    background-color: #ff00ff;
+    color: #0ff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* body.super-vibrant .dropdown-toggle::after {
+    content: ' ▼';
+    font-size: 0.8em;
+} */
+
+body.super-vibrant .dropdown-toggle:hover {
+    background-color: #e600e6;
+}
+
+body.super-vibrant .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(255, 0, 255, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    animation: fadeIn 0.5s forwards;
+}
+
+body.super-vibrant .dropdown-menu.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body.super-vibrant .dropdown-menu .dropdown-item {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.super-vibrant .dropdown-menu .dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, #00ffff, transparent);
+    transition: all 0.5s ease;
+}
+
+body.super-vibrant .dropdown-menu .dropdown-item:hover::before {
+    left: 0;
+}
+
+body.super-vibrant .dropdown-menu .dropdown-item:hover {
+    color: #00ffff;
+}
+
+/* Divider Styles */
+body.super-vibrant .divider {
+    height: 1px;
+    background-color: #ff00ff;
+    margin: 5px 0;
+}
+
+/* Video Banner Styles */
+body.super-vibrant .video-banner {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+body.super-vibrant .video-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%) saturate(120%);
+    /* animation: videoMove 60s linear infinite; */
+}
+
+@keyframes videoMove {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+body.super-vibrant .video-banner .overlay {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fadeInOverlay 2s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInOverlay {
+    to { opacity: 1; }
+}
+
+body.super-vibrant .video-banner .overlay h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    animation: textPulse 2s infinite;
+}
+
+@keyframes textPulse {
+    0%, 100% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
+    50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
+}
+
+body.super-vibrant .video-banner .overlay p {
+    font-size: 1.8em;
+    animation: moveUp 5s infinite alternate;
+}
+
+@keyframes moveUp {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+/* Section Styles */
+body.super-vibrant section {
+    padding: 60px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+body.super-vibrant .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+body.super-vibrant h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ff00ff;
+    position: relative;
+    display: inline-block;
+}
+
+body.super-vibrant h2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    bottom: -10px;
+    left: 0;
+    border-radius: 2px;
+}
+
+/* Skills Container */
+body.super-vibrant .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+body.super-vibrant .skills-list ul {
+    list-style-type: square;
+    padding-left: 25px;
+}
+
+body.super-vibrant .skills-list li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+body.super-vibrant .skills-list li::before {
+    content: '✔';
+    color: #00ffff;
+    margin-right: 8px;
+}
+
+body.super-vibrant .skills-list li:hover {
+    color: #ff00ff;
+}
+
+/* Skills Description */
+body.super-vibrant .skills-description {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1em;
+    color: #cccccc;
+    animation: fadeInText 3s ease forwards;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes fadeInText {
+    to { opacity: 1; }
+}
+
+/* Custom Table Styles */
+body.super-vibrant .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    animation: slideInTable 1s ease forwards;
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+@keyframes slideInTable {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+body.super-vibrant .custom-table thead {
+    background-color: rgba(255, 0, 255, 0.8);
+    color: #ffffff;
+}
+
+body.super-vibrant .custom-table th,
+body.super-vibrant .custom-table td {
+    padding: 12px;
+    border: 1px solid #ff00ff;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.super-vibrant .custom-table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 255, 255, 0.1);
+}
+
+body.super-vibrant .custom-table tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 255, 255, 0.05);
+}
+
+body.super-vibrant .custom-table tbody tr:hover {
+    background-color: rgba(255, 0, 255, 0.2);
+}
+
+/* Accordion Styles */
+body.super-vibrant .accordion {
+    margin-top: 20px;
+}
+
+body.super-vibrant .accordion-item {
+    border: 1px solid #ff00ff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+body.super-vibrant .accordion-item:hover {
+    transform: scale(1.02);
+}
+
+body.super-vibrant .accordion-header {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.super-vibrant .accordion-header:hover {
+    background-color: rgba(255, 0, 255, 0.4);
+    color: #000000;
+}
+
+body.super-vibrant .accordion-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    display: none;
+}
+
+body.super-vibrant .accordion-content.active {
+    display: block;
+    animation: fadeInAccordion 0.5s ease;
+}
+
+@keyframes fadeInAccordion {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Card Styles */
+body.super-vibrant .card {
+    background-color: rgba(255, 0, 255, 0.1);
+    border: 1px solid #ff00ff;
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.super-vibrant .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(255, 0, 255, 0.3);
+}
+
+body.super-vibrant .card-title {
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+body.super-vibrant .card-text {
+    color: #e6ffe6;
+    font-size: 1.1em;
+}
+
+/* Contact Form Styles */
+body.super-vibrant .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInForm 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInForm {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.super-vibrant .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+body.super-vibrant .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+body.super-vibrant .form-control {
+    padding: 12px;
+    border: 2px solid #ff00ff;
+    border-radius: 8px;
+    background-color: rgba(255, 0, 255, 0.1);
+    color: #e6ffe6;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+body.super-vibrant .form-control:focus {
+    border-color: #00ffff;
+    background-color: rgba(0, 255, 255, 0.1);
+}
+
+body.super-vibrant .form-control::placeholder {
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+body.super-vibrant .btn-primary {
+    background-color: #ff00ff;
+    border: none;
+    padding: 12px 20px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.super-vibrant .btn-primary::before {
+    content: '';
+    position: absolute;
+    left: -50%;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, #00ffff, transparent);
+    transform: skewX(-45deg);
+    transition: all 0.5s ease;
+}
+
+body.super-vibrant .btn-primary:hover::before {
+    left: 100%;
+}
+
+body.super-vibrant .btn-primary:hover {
+    background-color: #e600e6;
+    transform: scale(1.05);
+}
+
+/* Footer Styles */
+body.super-vibrant footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+body.super-vibrant footer::before {
+    content: '★';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    color: #ff00ff;
+    animation: sparkle 1.5s infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* List Group Styles */
+body.super-vibrant .list-group-item {
+    background-color: rgba(255, 0, 255, 0.1);
+    color: #e6ffe6;
+    border: 1px solid #ff00ff;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.super-vibrant .list-group-item::after {
+    content: '➜';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+body.super-vibrant .list-group-item:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(5px);
+}
+
+body.super-vibrant .list-group-item:hover {
+    background-color: rgba(255, 0, 255, 0.2);
+    color: #ffff00;
+}
+
+/* Loader Animation */
+body.super-vibrant .loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.super-vibrant .loader::after {
+    content: '';
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ffffff;
+    border-top-color: #ff00ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Smooth Transitions for Common Elements */
+body.super-vibrant,
+.super-vibrant .navbar,
+.super-vibrant .video-banner .overlay,
+.super-vibrant section,
+.super-vibrant footer,
+.super-vibrant .accordion-header,
+.super-vibrant .accordion-content,
+.super-vibrant .form-control,
+.super-vibrant .btn-primary,
+.super-vibrant .btn-warning {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body.super-vibrant .video-banner {
+        height: 50vh;
+    }
+
+    body.super-vibrant .video-banner .overlay h1 {
+        font-size: 2.5em;
+    }
+
+    body.super-vibrant .video-banner .overlay p {
+        font-size: 1.2em;
+    }
+
+     /* Show toggler on mobile */
+     body.super-vibrant .navbar-toggler {
+        display: block;
+    }
+
+    /* Hide navbar links by default on mobile */
+    body.super-vibrant .navbar-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+        background-color: #1f1f1f; /* Match dark theme */
+        padding: 10px 0;
+        z-index: 999; /* Ensure it appears above other elements */
+    }
+
+    /* Show navbar links when active */
+    body.super-vibrant .navbar-links.active {
+        display: flex;
+    }
+
+    /* Navbar links styling on mobile */
+    body.super-vibrant .navbar-links .nav-link {
+        padding: 10px 20px;
+    }
+}
