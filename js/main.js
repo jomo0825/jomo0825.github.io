@@ -1,5 +1,5 @@
 /* main.js */
-const defaultTheme = "dark-mode-1";
+const defaultTheme = "super-vibrant";
 
 /* Navbar Toggler */
 const navbarToggler = document.getElementById('navbarToggler');
