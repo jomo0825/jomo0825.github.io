@@ -1,0 +1,344 @@
+/* darkModeHiContrast.css */
+
+/* High Contrast Dark Mode */
+body.dark-mode-3 {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar Styles */
+body.dark-mode-3 .navbar {
+    background-color: #000000;
+    padding: 15px 20px;
+    border-bottom: 2px solid #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+body.dark-mode-3 .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-mode-3 .navbar-brand {
+    font-size: 1.5em;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+body.dark-mode-3 .navbar-toggler {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: none; /* Hidden on larger screens */
+}
+
+body.dark-mode-3 .navbar-links {
+    display: flex;
+    gap: 15px;
+}
+
+body.dark-mode-3 .navbar-links .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode-3 .navbar-links .nav-link.active,
+body.dark-mode-3 .navbar-links .nav-link:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Dropdown Menu Styles */
+body.dark-mode-3 .dropdown-toggle {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+body.dark-mode-3 .dropdown-toggle:hover {
+    background-color: #cccccc;
+}
+
+body.dark-mode-3 .dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #000000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+body.dark-mode-3 .dropdown-menu.active {
+    display: block;
+}
+
+body.dark-mode-3 .dropdown-menu .dropdown-item {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode-3 .dropdown-menu .dropdown-item:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Divider Styles */
+body.dark-mode-3 .divider {
+    height: 1px;
+    background-color: #ffffff;
+    margin: 5px 0;
+}
+
+/* Video Banner Styles */
+body.dark-mode-3 .video-banner {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+body.dark-mode-3 .video-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.dark-mode-3 .video-banner .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+body.dark-mode-3 .video-banner .overlay h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+body.dark-mode-3 .video-banner .overlay p {
+    font-size: 1.5em;
+}
+
+/* Section Styles */
+body.dark-mode-3 section {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 60px 20px;
+}
+
+body.dark-mode-3 .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+body.dark-mode-3 h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+body.dark-mode-3 .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+body.dark-mode-3 .skills-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+body.dark-mode-3 .skills-list li {
+    margin-bottom: 10px;
+}
+
+body.dark-mode-3 .skills-description {
+    color: #ffffff;
+}
+
+/* Custom Table Styles */
+body.dark-mode-3 .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+body.dark-mode-3 .custom-table thead {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.dark-mode-3 .custom-table th,
+body.dark-mode-3 .custom-table td {
+    padding: 12px;
+    border: 1px solid #ffffff;
+    text-align: left;
+}
+
+body.dark-mode-3 .custom-table tbody tr:nth-of-type(odd) {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode-3 .custom-table tbody tr:nth-of-type(even) {
+    background-color: #000000;
+}
+
+body.dark-mode-3 .custom-table tbody tr:hover {
+    background-color: #333333;
+}
+
+/* Accordion Styles */
+body.dark-mode-3 .accordion {
+    margin-top: 20px;
+}
+
+body.dark-mode-3 .accordion-item {
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+body.dark-mode-3 .accordion-header {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode-3 .accordion-header:hover {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode-3 .accordion-content {
+    display: none; /* Initially hidden */
+    background-color: #1a1a1a;
+    padding: 15px;
+    transition: display 0.3s ease;
+}
+
+body.dark-mode-3 .accordion-content.active {
+    display: block;
+}
+
+body.dark-mode-3 .card {
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+body.dark-mode-3 .card-title {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+body.dark-mode-3 .card-text {
+    color: #ffffff;
+}
+
+/* Form Styles */
+body.dark-mode-3 .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+body.dark-mode-3 .form-group {
+    margin-bottom: 15px;
+}
+
+body.dark-mode-3 .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+body.dark-mode-3 .form-control {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode-3 .form-control::placeholder {
+    color: #ffffff;
+}
+
+body.dark-mode-3 .btn-primary {
+    background-color: #ff5722;
+    border: none;
+    padding: 10px 20px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode-3 .btn-primary:hover {
+    background-color: #e04e1a;
+}
+
+/* Footer Styles */
+body.dark-mode-3 footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* List Group Styles */
+body.dark-mode-3 .list-group-item {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode-3 .list-group-item:hover {
+    background-color: #333333;
+    color: #000000;
+}
+
+body.dark-mode-3 .list-group-item:active {
+    background-color: #495057;
+}

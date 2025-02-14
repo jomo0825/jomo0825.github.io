@@ -1,0 +1,334 @@
+/* cyberpunkNeon.css */
+
+/* Neon Cyberpunk Theme */
+body.cyberpunk-1 {
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body.cyberpunk-1 .navbar {
+    background-color: #1a1a1a;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+body.cyberpunk-1 .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.cyberpunk-1 .navbar-brand {
+    font-size: 1.5em;
+    color: #ff39e0;
+    text-decoration: none;
+}
+
+body.cyberpunk-1 .navbar-toggler {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: #ff39e0;
+    cursor: pointer;
+    display: none; /* Hidden on larger screens */
+}
+
+body.cyberpunk-1 .navbar-links {
+    display: flex;
+    gap: 15px;
+}
+
+body.cyberpunk-1 .navbar-links .nav-link {
+    color: #ff39e0;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.cyberpunk-1 .navbar-links .nav-link.active,
+body.cyberpunk-1 .navbar-links .nav-link:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.cyberpunk-1 .theme-switcher {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+body.cyberpunk-1 .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+body.cyberpunk-1 .dropdown-toggle {
+    background-color: #333333;
+    color: #ff39e0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+body.cyberpunk-1 .dropdown-toggle:hover {
+    background-color: #444444;
+}
+
+body.cyberpunk-1 .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+body.cyberpunk-1 .dropdown-menu.active {
+    display: block;
+}
+
+body.cyberpunk-1 .dropdown-menu .dropdown-item {
+    color: #ff39e0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.cyberpunk-1 .dropdown-menu .dropdown-item:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+body.cyberpunk-1 .divider {
+    height: 1px;
+    background-color: #444444;
+    margin: 5px 0;
+}
+
+body.cyberpunk-1 .video-banner {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+body.cyberpunk-1 .video-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.cyberpunk-1 .video-banner .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+body.cyberpunk-1 .video-banner .overlay h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #ff39e0;
+}
+
+body.cyberpunk-1 .video-banner .overlay p {
+    font-size: 1.5em;
+}
+
+body.cyberpunk-1 .section {
+    padding: 60px 20px;
+}
+
+body.cyberpunk-1 .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+body.cyberpunk-1 h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ff39e0;
+}
+
+body.cyberpunk-1 .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+body.cyberpunk-1 .skills-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+body.cyberpunk-1 .skills-list li {
+    margin-bottom: 10px;
+}
+
+body.cyberpunk-1 .skills-description {
+    color: #f0f0f0;
+}
+
+body.cyberpunk-1 .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+body.cyberpunk-1 .custom-table thead {
+    background-color: #1a1a1a;
+    color: #ff39e0;
+}
+
+body.cyberpunk-1 .custom-table th,
+body.cyberpunk-1 .custom-table td {
+    padding: 12px;
+    border: 1px solid #ff39e0;
+    text-align: left;
+}
+
+body.cyberpunk-1 .custom-table tbody tr:nth-of-type(odd) {
+    background-color: #2c2c2c;
+}
+
+body.cyberpunk-1 .custom-table tbody tr:nth-of-type(even) {
+    background-color: #1a1a1a;
+}
+
+body.cyberpunk-1 .custom-table tbody tr:hover {
+    background-color: #333333;
+}
+
+body.cyberpunk-1 .accordion {
+    margin-top: 20px;
+}
+
+body.cyberpunk-1 .accordion-item {
+    border: 1px solid #ff39e0;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+body.cyberpunk-1 .accordion-header {
+    background-color: #1a1a1a;
+    color: #ff39e0;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.cyberpunk-1 .accordion-header:hover {
+    background-color: #333333;
+}
+
+body.cyberpunk-1 .accordion-content {
+    /* display: none; */
+    background-color: #2c2c2c;
+    padding: 15px;
+}
+
+body.cyberpunk-1 .card {
+    background-color: #1a1a1a;
+    border: 1px solid #ff39e0;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+body.cyberpunk-1 .card-title {
+    margin-bottom: 10px;
+    color: #ff39e0;
+}
+
+body.cyberpunk-1 .card-text {
+    color: #f0f0f0;
+}
+
+body.cyberpunk-1 .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+body.cyberpunk-1 .form-group {
+    margin-bottom: 15px;
+}
+
+body.cyberpunk-1 .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ff39e0;
+}
+
+body.cyberpunk-1 .form-control {
+    width: 100%;
+    padding: 10px;
+    background-color: #333333;
+    color: #f0f0f0;
+    border: 1px solid #ff39e0;
+    border-radius: 4px;
+}
+
+body.cyberpunk-1 .form-control::placeholder {
+    color: #ff79c6;
+}
+
+body.cyberpunk-1 .btn-primary {
+    background-color: #ff39e0;
+    border: none;
+    padding: 10px 20px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+body.cyberpunk-1 .btn-primary:hover {
+    background-color: #e029c5;
+}
+
+body.cyberpunk-1 footer {
+    background-color: #1a1a1a;
+    color: #ff39e0;
+    text-align: center;
+    padding: 20px;
+}
+
+body.cyberpunk-1 .list-group-item {
+    background-color: #1a1a1a;
+    color: #ff39e0;
+    border: 1px solid #ff39e0;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.cyberpunk-1 .list-group-item:hover {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+body.cyberpunk-1 .list-group-item:active {
+    background-color: #495057;
+}

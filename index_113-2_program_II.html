@@ -3,100 +3,67 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Existing meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Interactive Programming Design</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&family=VT323&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/myStyle.css">
+    <!-- Theme Stylesheets -->
+    <link rel="stylesheet" href="css/darkMode.css">
+    <link rel="stylesheet" href="css/darkModeBlue.css">
+    <link rel="stylesheet" href="css/darkModeHiContrast.css">
+    <link rel="stylesheet" href="css/cyberpunkNeon.css">
+    <link rel="stylesheet" href="css/cyberpunkHolo.css">
+    <link rel="stylesheet" href="css/cyberpunkMatrix.css">
     <style>
-        /* Full-width video banner styling */
-        .video-banner {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
+        /* Optional: Smooth Transitions for Common Elements */
+        body,
+        .navbar,
+        .video-banner .overlay,
+        section,
+        footer,
+        .accordion-header,
+        .accordion-content,
+        .form-control,
+        .btn-primary,
+        .btn-warning {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-
-        .video-banner video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-banner .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-align: left;
-            align-content: end;
-            padding: 0 20px;
-        }
-
-        .video-banner .overlay h1 {
-            position: absolute;
-            bottom: 25%;
-        }
-        .video-banner .overlay p {
-            position: absolute;
-            bottom: 17%;
-        }
-
-        /* Additional spacing */
-        section {
-            padding: 60px 20px;
-        }
-
-        /* Footer styling */
-        footer {
-            background-color: #f8f9fa;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        /* Optional: Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
     </style>
 </head>
 
 <body>
-
     <!-- Responsive Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
+    <nav class="navbar">
+        <div class="navbar-container">
             <a class="navbar-brand" href="#">NTUT IXD</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" id="navbarToggler" aria-label="Toggle navigation">
+                ☰
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#courses">Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#blogs">Blogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#resources">Resources</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about-me">About me</a>
-                    </li>
-                </ul>
+            <div class="navbar-links" id="navbarLinks">
+                <a class="nav-link active" href="#home">Home</a>
+                <a class="nav-link" href="#courses">Courses</a>
+                <a class="nav-link" href="#blogs">Blogs</a>
+                <a class="nav-link" href="#resources">Resources</a>
+                <!-- Theme Switcher Dropdown -->
+                <div class="dropdown">
+                    <button class="dropdown-toggle" id="themeDropdown">
+                        Select Theme ▼
+                    </button>
+                    <ul class="dropdown-menu" id="themeDropdownMenu">
+                        <li><button class="dropdown-item" onclick="setTheme('dark-mode-1')">Classic Dark</button></li>
+                        <li><button class="dropdown-item" onclick="setTheme('dark-mode-2')">Blue-Toned Dark</button></li>
+                        <li><button class="dropdown-item" onclick="setTheme('dark-mode-3')">High Contrast Dark</button></li>
+                        <li><hr class="divider"></li>
+                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-1')">Neon Cyberpunk</button></li>
+                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-2')">Holographic Cyberpunk</button></li>
+                        <li><button class="dropdown-item" onclick="setTheme('cyberpunk-3')">Matrix Cyberpunk</button></li>
+                        <li><hr class="divider"></li>
+                        <li><button class="dropdown-item" onclick="setTheme('')">Light Mode</button></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -105,9 +72,7 @@
     <!-- Full-width Video Banner -->
     <div class="video-banner" id="home">
         <video autoplay muted loop>
-            <source
-                src="https://raw.githubusercontent.com/jomo0825/jomo0825.github.io/master/video/346712815644274692.mp4"
-                type="video/mp4">
+            <source src="https://raw.githubusercontent.com/jomo0825/jomo0825.github.io/master/video/346712815644274692.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="overlay">
@@ -118,29 +83,33 @@
     </div>
 
     <!-- About Section -->
-    <section id="about" class="container">
-        <h2 class="mb-4">About the Course</h2>
-        <p>
-            This course introduces the fundamental principles, structures, and design methodologies essential for
-            interactive app programming using JavaScript, HTML, CSS languages, and Electron, Webix, React, and Ionic frameworks. It emphasizes
-            intensive, hands-on practice to ensure practical understanding and skill development. </p>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About the Course</h2>
+            <p>
+                This course introduces the fundamental principles, structures, and design methodologies essential for
+                interactive app programming using JavaScript, HTML, CSS languages, and Electron, Webix, React, and Ionic
+                frameworks. It emphasizes
+                intensive, hands-on practice to ensure practical understanding and skill development.
+            </p>
+        </div>
     </section>
 
     <!-- Skills You'll Gain Section -->
-    <section id="skills" class="bg-light">
+    <section id="skills" class="section">
         <div class="container">
-            <h2 class="mb-4">Skills You'll Gain</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Skill 1: Advanced Javascript Programming</li>
-                        <li class="list-group-item">Skill 2: UI Framesworks</li>
-                        <li class="list-group-item">Skill 3: MVC Design Pattern</li>
-                        <li class="list-group-item">Skill 4: AI Assisted Programming</li>
-                        <li class="list-group-item">Skill 5: Hybrid Mobile App Design</li>
+            <h2>Skills You'll Gain</h2>
+            <div class="skills-container">
+                <div class="skills-list">
+                    <ul>
+                        <li>Skill 1: Advanced Javascript Programming</li>
+                        <li>Skill 2: UI Frameworks</li>
+                        <li>Skill 3: MVC Design Pattern</li>
+                        <li>Skill 4: AI Assisted Programming</li>
+                        <li>Skill 5: Hybrid Mobile App Design</li>
                     </ul>
                 </div>
-                <div class="col-md-8">
+                <div class="skills-description">
                     <p>
                         Throughout the course, you'll engage in various activities and projects that will help you
                         develop these essential skills. Our curriculum is tailored to ensure you’re industry-ready upon
@@ -151,101 +120,87 @@
         </div>
     </section>
 
-    <!-- 評分標準 (Evaluation Criteria) -->
-    <section id="evaluation" class="container">
-        <h2 class="mb-4">Evaluation Criteria</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Criteria</th>
-                    <th>Percentage (%)</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Attendance</td>
-                    <td>10%</td>
-                    <td>Participation in classes and activities on time.</td>
-                </tr>
-                <tr>
-                    <td>Mid-term Project</td>
-                    <td>40%</td>
-                    <td>Design and upload your mid-term project.</td>
-                </tr>
-                <tr>
-                    <td>Final Project</td>
-                    <td>50%</td>
-                    <td>Design, upload, and present your final project.</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Evaluation Criteria Section -->
+    <section id="evaluation" class="section">
+        <div class="container">
+            <h2>Evaluation Criteria</h2>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>Percentage (%)</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Attendance</td>
+                        <td>10%</td>
+                        <td>Participation in classes and activities on time.</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-term Project</td>
+                        <td>40%</td>
+                        <td>Design and upload your mid-term project.</td>
+                    </tr>
+                    <tr>
+                        <td>Final Project</td>
+                        <td>50%</td>
+                        <td>Design, upload, and present your final project.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <!-- 18 Week Schedule in Accordion -->
-    <section id="schedule" class="bg-light">
+    <section id="schedule" class="section">
         <div class="container">
-            <h2 class="mb-4">Schedule</h2>
+            <h2>Schedule</h2>
             <div class="accordion" id="scheduleAccordion">
-                <!-- Week 1 -->
+                <!-- Example Week -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Section 1: Environment Setup
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#scheduleAccordion">
-                        <div class="accordion-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Setup Your Development Environment</h5>
-                                    <p class="card-text">Install all the required tools and modules. The demostration will be shown on Windows system.
-                                    </p>
-                                </div>
+                    <div class="accordion-header" onclick="toggleAccordion('collapseOne')">
+                        <span>Section 1: Environment Setup</span>
+                        <span class="accordion-icon" id="collapseOneIcon">+</span>
+                    </div>
+                    <div class="accordion-content" id="collapseOne">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Setup Your Development Environment</h5>
+                                <p class="card-text">Install all the required tools and modules. The demonstration
+                                    will be shown on Windows system.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Repeat similar blocks for Weeks 2 to 18 -->
-                <!-- For brevity, only a few weeks are shown here -->
                 <!-- Week 2 -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Section 2: Advanced Topics
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#scheduleAccordion">
-                        <div class="accordion-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Deep Dive into Advanced Subjects</h5>
-                                    <p class="card-text">Exploration of more complex topics and their applications.</p>
-                                </div>
+                    <div class="accordion-header" onclick="toggleAccordion('collapseTwo')">
+                        <span>Section 2: Advanced Topics</span>
+                        <span class="accordion-icon" id="collapseTwoIcon">+</span>
+                    </div>
+                    <div class="accordion-content" id="collapseTwo">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Deep Dive into Advanced Subjects</h5>
+                                <p class="card-text">Exploration of more complex topics and their applications.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Week 3 -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Section 3: Practical Applications
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#scheduleAccordion">
-                        <div class="accordion-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Hands-On Projects</h5>
-                                    <p class="card-text">Applying learned concepts through practical assignments.</p>
-                                </div>
+                    <div class="accordion-header" onclick="toggleAccordion('collapseThree')">
+                        <span>Section 3: Practical Applications</span>
+                        <span class="accordion-icon" id="collapseThreeIcon">+</span>
+                    </div>
+                    <div class="accordion-content" id="collapseThree">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Hands-On Projects</h5>
+                                <p class="card-text">Applying learned concepts through practical assignments.</p>
                             </div>
                         </div>
                     </div>
@@ -253,20 +208,15 @@
                 <!-- ... Continue adding weeks up to Week 18 -->
                 <!-- Week 18 -->
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingEighteen">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
-                            Section 4: Final Assessment & Graduation
-                        </button>
-                    </h2>
-                    <div id="collapseEighteen" class="accordion-collapse collapse" aria-labelledby="headingEighteen"
-                        data-bs-parent="#scheduleAccordion">
-                        <div class="accordion-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Final Projects and Evaluation</h5>
-                                    <p class="card-text">Completion of final projects and overall course assessment.</p>
-                                </div>
+                    <div class="accordion-header" onclick="toggleAccordion('collapseEighteen')">
+                        <span>Section 18: Final Assessment & Graduation</span>
+                        <span class="accordion-icon" id="collapseEighteenIcon">+</span>
+                    </div>
+                    <div class="accordion-content" id="collapseEighteen">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Final Projects and Evaluation</h5>
+                                <p class="card-text">Completion of final projects and overall course assessment.</p>
                             </div>
                         </div>
                     </div>
@@ -276,23 +226,25 @@
     </section>
 
     <!-- Message Form -->
-    <section id="contact" class="container">
-        <h2 class="mb-4">Get in Touch</h2>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your name">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Your email">
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="5" placeholder="Your message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-        </form>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" placeholder="Your message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -302,14 +254,8 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS and dependencies (Popper.js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Optional: Expand all accordion items if needed
-        // const scheduleAccordion = new bootstrap.Accordion(document.getElementById('scheduleAccordion'), {
-        //     toggle: false
-        // });
-    </script>
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
