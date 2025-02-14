@@ -12,11 +12,14 @@
         .video-banner {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 100vh;
             overflow: hidden;
         }
 
         .video-banner video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -29,13 +32,21 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            //display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
             text-align: left;
-            align-content: center;
+            align-content: end;
             padding: 0 20px;
+        }
+
+        .video-banner .overlay h1 {
+            position: absolute;
+            bottom: 25%;
+        }
+        .video-banner .overlay p {
+            position: absolute;
+            bottom: 17%;
         }
 
         /* Additional spacing */
@@ -54,6 +65,7 @@
         html {
             scroll-behavior: smooth;
         }
+
     </style>
 </head>
 
@@ -62,7 +74,7 @@
     <!-- Responsive Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Course Page</a>
+            <a class="navbar-brand" href="#">NTUT IXD</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -101,6 +113,7 @@
         <div class="overlay">
             <h1>Advanced Interactive Programming Design</h1>
             <p>Enhance your skills with our comprehensive program</p>
+            <br><br>
         </div>
     </div>
 
@@ -144,31 +157,26 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>項目 (Criteria)</th>
-                    <th>百分比 (%)</th>
-                    <th>描述 (Description)</th>
+                    <th>Criteria</th>
+                    <th>Percentage (%)</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>出席率</td>
-                    <td>20%</td>
-                    <td>按時參加課程和活動的情況</td>
+                    <td>Attendance</td>
+                    <td>10%</td>
+                    <td>Participation in classes and activities on time.</td>
                 </tr>
                 <tr>
-                    <td>作業</td>
-                    <td>30%</td>
-                    <td>定期提交的家庭作業和項目</td>
+                    <td>Mid-term Project</td>
+                    <td>40%</td>
+                    <td>Design and upload your mid-term project.</td>
                 </tr>
                 <tr>
-                    <td>測驗和考試</td>
-                    <td>30%</td>
-                    <td>課程中的各類測驗和期末考試</td>
-                </tr>
-                <tr>
-                    <td>專案展示</td>
-                    <td>20%</td>
-                    <td>最終專案的呈現和展示</td>
+                    <td>Final Project</td>
+                    <td>50%</td>
+                    <td>Design, upload, and present your final project.</td>
                 </tr>
             </tbody>
         </table>
@@ -177,14 +185,14 @@
     <!-- 18 Week Schedule in Accordion -->
     <section id="schedule" class="bg-light">
         <div class="container">
-            <h2 class="mb-4">18-Week Schedule</h2>
+            <h2 class="mb-4">Schedule</h2>
             <div class="accordion" id="scheduleAccordion">
                 <!-- Week 1 -->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Week 1: Introduction & Basics
+                            Section 1: Environment Setup
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
@@ -192,8 +200,8 @@
                         <div class="accordion-body">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Introduction to the Course</h5>
-                                    <p class="card-text">Overview of the course objectives, structure, and expectations.
+                                    <h5 class="card-title">Setup Your Development Environment</h5>
+                                    <p class="card-text">Install all the required tools and modules. The demostration will be shown on Windows system.
                                     </p>
                                 </div>
                             </div>
@@ -207,7 +215,7 @@
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Week 2: Advanced Topics
+                            Section 2: Advanced Topics
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -227,7 +235,7 @@
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Week 3: Practical Applications
+                            Section 3: Practical Applications
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
@@ -248,7 +256,7 @@
                     <h2 class="accordion-header" id="headingEighteen">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
-                            Week 18: Final Assessment & Graduation
+                            Section 4: Final Assessment & Graduation
                         </button>
                     </h2>
                     <div id="collapseEighteen" class="accordion-collapse collapse" aria-labelledby="headingEighteen"
@@ -272,25 +280,25 @@
         <h2 class="mb-4">Get in Touch</h2>
         <form>
             <div class="mb-3">
-                <label for="name" class="form-label">姓名 (Name)</label>
-                <input type="text" class="form-control" id="name" placeholder="您的姓名">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your name">
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">電子郵件 (Email)</label>
-                <input type="email" class="form-control" id="email" placeholder="您的電子郵件">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Your email">
             </div>
             <div class="mb-3">
-                <label for="message" class="form-label">訊息 (Message)</label>
-                <textarea class="form-control" id="message" rows="5" placeholder="您的訊息"></textarea>
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Your message"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">發送 (Send)</button>
+            <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Your Course Name. All rights reserved.</p>
+            <p>&copy; 2025 Tz-heng Fu. All rights reserved by Mr. Fu.</p>
         </div>
     </footer>
 
