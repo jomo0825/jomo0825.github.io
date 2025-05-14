@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Viewer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            padding: 16px;
+            overflow: auto;
+        }
+        code {
+            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            background-color: rgba(27, 31, 35, 0.05);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">Loading...</div>
+
+    <!-- Include the Marked.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script>
+        // Function to fetch and render the Markdown file
+        async function loadMarkdown(url) {
+            try {
+                // Fetch the .md file
+                const response = await fetch(url);
+                
+                // Check if the fetch was successful
+                if (!response.ok) {
+                    throw new Error(`Failed to load file: ${response.status} ${response.statusText}`);
+                }
+                
+                // Get the text content from the response
+                const markdownText = await response.text();
+                
+                // Convert Markdown to HTML using Marked.js
+                const htmlContent = marked.parse(markdownText);
+                
+                // Insert the HTML into our content div
+                document.getElementById('content').innerHTML = htmlContent;
+                
+            } catch (error) {
+                console.error('Error loading or parsing Markdown:', error);
+                document.getElementById('content').innerHTML = `<p>Error loading Markdown: ${error.message}</p>`;
+            }
+        }
+        
+        // Load your markdown file (replace with your actual file path)
+        loadMarkdown('your-markdown-file.md');
+    </script>
+</body>
+</html>
