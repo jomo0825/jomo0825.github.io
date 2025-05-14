@@ -72,7 +72,8 @@
         const params = new URLSearchParams(window.location.search);
         const filename = params.get('file') ? `${params.get('file')}.md` : 'your-markdown-file.md';
         const fileUrl = "https://raw.githubusercontent.com/jomo0825/jomo0825.github.io/master/blogs/"+filename
-        console.log(fileUrl)
+        // console.log(fileUrl)
+        document.title = filename
         loadMarkdown(fileUrl);
     </script>
 </body>
