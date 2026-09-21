@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+<!-- ===================================================================
+     ↓↓↓ 上線前請修改（或用 make_slides_json.py --base-url 自動改）↓↓↓
+     Facebook 縮圖一定要用「完整網址」，不能用相對路徑。
+     =================================================================== -->
+<title>投影片學習網 · Slide Study</title>
+<meta name="description" content="線上投影片瀏覽與筆記平台：分章節、全螢幕、縮放、手繪標註、白板筆記。">
+<meta property="og:title" content="強化學習基礎">
+<meta property="og:description" content="線上投影片瀏覽與筆記平台：分章節、全螢幕、縮放、手繪標註、白板筆記。">
+<meta property="og:image" content="https://jomo0825.github.io/slide-study-site-bright/slides/Bellman and DP/slide-001.png">
+<meta property="og:url" content="https://jomo0825.github.io/slide-study-site-bright/">
+<!-- =================================================================== -->
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta property="og:image:alt" content="投影片第一頁預覽">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFF7E4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23F7A23B'/%3E%3Crect x='20' y='28' width='60' height='40' rx='5' fill='%23fff'/%3E%3C/svg%3E">
+
+<style>
+:root{
+  --bg:#FFF7E4; --bg2:#FFFDF6; --card:#FFFFFF; --panel:#FFFDF6;
+  --line:#EBD9B4; --line2:#DCC08A; --shadow:#E9D4A6;
+  --txt:#4A3823; --dim:#937C5A;
+  --pink:#FF5C9E; --pinkD:#E33C82;
+  --blue:#3D9BE9; --blueD:#2A7FC8;
+  --green:#5FBF6A; --greenD:#45A252;
+  --orange:#F7A23B; --orangeD:#DD8420;
+  --yellow:#FFE9A8; --navy:#1F3A68;
+  --ok:#5FBF6A; --warn:#DD8420;
+  --bar:60px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--txt); overflow:hidden;
+  font-family:"Baloo 2","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  font-weight:500; overscroll-behavior:none; letter-spacing:.2px;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a{color:var(--blueD);text-decoration-thickness:2px;text-underline-offset:2px}
+
+/* ---------- 版面 ---------- */
+#app{position:fixed;inset:0;display:flex;flex-direction:column}
+#topbar,#bottombar{
+  flex:0 0 auto;height:var(--bar);display:flex;align-items:center;gap:8px;
+  padding:0 12px;background:var(--bg2);border-bottom:3px solid var(--line);
+  z-index:30;overflow-x:auto;scrollbar-width:none;
+}
+#topbar::-webkit-scrollbar,#bottombar::-webkit-scrollbar{display:none}
+#bottombar{border-bottom:0;border-top:3px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom);
+  height:calc(var(--bar) + env(safe-area-inset-bottom))}
+.brand{font-weight:800;font-size:18px;white-space:nowrap;flex:0 0 auto;margin-right:2px;color:var(--navy);
+  text-shadow:0 2px 0 #FFF2C9}
+.spacer{flex:1 1 auto;min-width:4px}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-width:42px;height:42px;padding:0 13px;border-radius:999px;
+  border:2.5px solid var(--line2);background:var(--card);color:var(--txt);
+  font-size:14.5px;font-weight:700;white-space:nowrap;flex:0 0 auto;
+  box-shadow:0 3px 0 var(--shadow);transition:.13s;
+}
+.btn:hover{border-color:var(--orange);box-shadow:0 3px 0 #F3D69A;transform:translateY(-1px)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--shadow)}
+.btn.on{background:var(--pink);border-color:var(--pinkD);color:#fff;box-shadow:0 3px 0 var(--pinkD)}
+.btn.on:hover{border-color:var(--pinkD);box-shadow:0 3px 0 var(--pinkD)}
+.btn.primary{background:var(--blue);border-color:var(--blueD);color:#fff;box-shadow:0 3px 0 var(--blueD)}
+.btn.primary:hover{border-color:var(--blueD);box-shadow:0 3px 0 var(--blueD)}
+.btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.lbl{display:none}
+@media(min-width:960px){.lbl{display:inline}}
+
+#chapSel{height:42px;max-width:min(38vw,300px);border-radius:999px;border:2.5px solid var(--line2);
+  background:var(--card) ;padding:0 14px;flex:0 0 auto;outline:none;cursor:pointer;font-weight:700;
+  box-shadow:0 3px 0 var(--shadow)}
+#chapSel:hover{border-color:var(--green)}
+
+#pagebox{display:flex;align-items:center;gap:5px;background:var(--yellow);border:2.5px solid #EFC96C;
+  border-radius:999px;height:42px;padding:0 12px;flex:0 0 auto;font-weight:700;box-shadow:0 3px 0 #EDCB84}
+#pageInput{width:46px;background:none;border:0;text-align:center;font-variant-numeric:tabular-nums;outline:none;font-weight:800}
+#pageTotal{color:#8A6B2E;font-variant-numeric:tabular-nums}
+
+/* ---------- 舞台 ---------- */
+#stage{flex:1 1 auto;position:relative;overflow:hidden;touch-action:none;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.75) 0 2px,transparent 3px) 0 0/34px 34px,
+    linear-gradient(180deg,#DCF1FF 0%,#EDF8E4 52%,#FFF7E4 100%);}
+#wrap{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;background:#fff;
+  border-radius:8px;box-shadow:0 0 0 7px #fff,0 0 0 10px rgba(220,192,138,.55),0 16px 36px rgba(140,110,60,.28)}
+#slideImg{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;border-radius:6px}
+#ink{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+#stage.draw{cursor:crosshair}
+#stage.pan{cursor:grab}
+#stage.pan.dragging{cursor:grabbing}
+
+#topline{position:absolute;left:0;right:0;top:0;height:5px;z-index:18;overflow:hidden;display:none;background:rgba(255,255,255,.6)}
+#topline.show{display:block}
+#topline::after{content:"";position:absolute;inset:0;width:38%;border-radius:5px;
+  background:linear-gradient(90deg,transparent,var(--pink),var(--orange),var(--green),transparent);
+  animation:slide 1.05s ease-in-out infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(320%)}}
+#slideSpin{position:absolute;inset:0;z-index:17;display:none;align-items:center;justify-content:center;
+  flex-direction:column;gap:12px;color:var(--dim);font-size:14px;font-weight:700;pointer-events:none}
+#slideSpin.show{display:flex}
+
+#zoomTag,#chapTag{position:absolute;z-index:12;background:var(--card);border:2.5px solid var(--line2);
+  border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:700;color:var(--txt);
+  box-shadow:0 3px 0 var(--shadow);pointer-events:none}
+#zoomTag{left:14px;bottom:14px;font-variant-numeric:tabular-nums;color:var(--dim)}
+#chapTag{left:14px;top:14px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:var(--yellow);border-color:#EFC96C;box-shadow:0 3px 0 #EDCB84;color:#7A5A20}
+.edge{position:absolute;top:0;bottom:0;width:11%;max-width:110px;z-index:11;border:0;opacity:0;transition:.2s;
+  display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:34px;font-weight:800}
+.edge:hover{opacity:1;background:linear-gradient(90deg,rgba(255,255,255,.75),transparent)}
+#edgeR{right:0}#edgeR:hover{background:linear-gradient(270deg,rgba(255,255,255,.75),transparent)}
+#edgeL{left:0}
+@media(hover:none){.edge{display:none}}
+
+#pre{display:none;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--dim);flex:0 0 auto;
+  background:var(--card);border:2.5px solid var(--line2);border-radius:999px;height:42px;padding:0 14px;
+  box-shadow:0 3px 0 var(--shadow)}
+#pre.show{display:flex}
+#preBar{width:66px;height:8px;border-radius:99px;background:#F1E3C4;overflow:hidden;border:1px solid #E2CDA0}
+#preFill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--pink),var(--orange));transition:width .2s}
+
+/* ---------- 繪圖工具列 ---------- */
+#tools{position:absolute;right:16px;top:16px;z-index:20;display:none;flex-direction:column;gap:8px;
+  background:var(--card);border:3px solid var(--line2);border-radius:20px;padding:10px;
+  box-shadow:0 5px 0 var(--shadow),0 14px 30px rgba(150,120,70,.2)}
+#tools.show{display:flex}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.sw{width:24px;height:24px;border-radius:50%;border:3px solid #fff;cursor:pointer;
+  box-shadow:0 0 0 2px var(--line2)}
+.sw.on{box-shadow:0 0 0 3px var(--txt);transform:scale(1.1)}
+#sizeRange{width:100%;accent-color:var(--pink)}
+.hr{height:3px;background:var(--line);border-radius:3px;margin:2px 0}
+
+/* ---------- 覆蓋層 ---------- */
+.overlay{position:fixed;inset:0;z-index:60;background:var(--bg);display:none;flex-direction:column}
+.overlay.show{display:flex}
+.overlay.modal{background:rgba(255,244,220,.88);backdrop-filter:blur(5px);align-items:center;justify-content:center;
+  padding:20px;z-index:70}
+.card{width:100%;max-width:540px;background:var(--card);border:3px solid var(--line2);border-radius:24px;
+  padding:24px;box-shadow:0 6px 0 var(--shadow),0 20px 50px rgba(150,120,70,.25);max-height:92vh;overflow:auto}
+.card h2{margin:0 0 8px;font-size:22px;font-weight:800;color:var(--navy)}
+.card .sub{color:var(--dim);font-size:14px;line-height:1.85;margin-bottom:16px}
+.bigbtn{display:flex;width:100%;align-items:center;gap:13px;text-align:left;padding:15px 17px;border-radius:18px;
+  border:3px solid var(--line);background:#FFFDF6;margin-bottom:11px;transition:.13s}
+.bigbtn:hover{border-color:var(--blue);background:#F1F9FF;transform:translateY(-2px)}
+.bigbtn .ic{font-size:24px;flex:0 0 auto}
+.bigbtn b{display:block;font-size:16px;margin-bottom:3px;color:var(--txt)}
+.bigbtn span{color:var(--dim);font-size:13px;line-height:1.65;font-weight:500}
+.bigbtn.hot{border-color:#FFB9D6;background:#FFF3F8}
+.bigbtn.hot:hover{border-color:var(--pink);background:#FFE9F2}
+#drop{border:3px dashed #EFC96C;border-radius:18px;padding:18px;text-align:center;color:var(--dim);
+  font-size:13.5px;font-weight:700;margin:6px 0 16px;background:#FFFBEE;transition:.13s}
+#drop.over{border-color:var(--pink);background:#FFEFF6;color:var(--pinkD)}
+
+.ohead{height:var(--bar);display:flex;align-items:center;gap:9px;padding:0 14px;border-bottom:3px solid var(--line);
+  background:var(--bg2);flex:0 0 auto;overflow-x:auto;scrollbar-width:none}
+.ohead::-webkit-scrollbar{display:none}
+.otitle{font-weight:800;font-size:17px;white-space:nowrap;color:var(--navy);
+  background:var(--yellow);border:2.5px solid #EFC96C;border-radius:999px;padding:7px 17px;
+  box-shadow:0 3px 0 #EDCB84}
+.obody{flex:1 1 auto;overflow:auto;padding:22px 18px;-webkit-overflow-scrolling:touch;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px) 0 0/34px 34px,
+    var(--bg)}
+
+/* 章節目錄 */
+#chapList{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));max-width:1400px;margin:0 auto}
+.chcard{display:flex;flex-direction:column;text-align:left;background:var(--card);border:3.5px solid var(--blue);
+  border-radius:24px;overflow:hidden;cursor:pointer;transition:.16s;padding:0;
+  box-shadow:0 6px 0 rgba(61,155,233,.35)}
+.chcard:nth-child(4n+2){border-color:var(--green);box-shadow:0 6px 0 rgba(95,191,106,.35)}
+.chcard:nth-child(4n+3){border-color:var(--orange);box-shadow:0 6px 0 rgba(247,162,59,.35)}
+.chcard:nth-child(4n+4){border-color:var(--pink);box-shadow:0 6px 0 rgba(255,92,158,.32)}
+.chcard:hover{transform:translateY(-4px);box-shadow:0 10px 0 rgba(150,120,70,.25),0 18px 34px rgba(150,120,70,.22)}
+.chcard.cur{outline:4px dashed #FFC96B;outline-offset:4px}
+.chcard img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff;display:block;border-bottom:3px solid var(--line)}
+.chcard .cbody{padding:14px 17px 18px}
+.chcard h3{margin:0 0 9px;font-size:18px;font-weight:800;line-height:1.5;color:var(--navy)}
+.chmeta{font-size:12.5px;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.badge{background:var(--yellow);border:2px solid #EFC96C;color:#7A5A20;border-radius:999px;padding:2px 11px;font-weight:700}
+.badge.has{background:#DFF5E1;border-color:#A6DDAC;color:#2F6B37}
+.md{font-size:14px;line-height:1.85;color:#6B563B;font-weight:500}
+.md h1,.md h2,.md h3{color:var(--navy);margin:.8em 0 .4em;line-height:1.5;font-weight:800}
+.md h1{font-size:20px}.md h2{font-size:18px}.md h3{font-size:16px}
+.md p{margin:.5em 0}
+.md ul,.md ol{margin:.5em 0;padding-left:1.35em}
+.md li{margin:.3em 0}
+.md li::marker{color:var(--orange)}
+.md code{background:#FFF3C4;color:#B4571A;padding:1px 7px;border-radius:7px;font-size:.92em;font-weight:700}
+.md pre{background:#FFFBEE;padding:12px 14px;border-radius:14px;overflow:auto;border:2.5px solid var(--line)}
+.md pre code{background:none;padding:0}
+.md blockquote{margin:.7em 0;padding:.5em .9em;border-left:5px solid #FFC96B;background:#FFF9E8;border-radius:0 12px 12px 0;color:#7A5A20}
+.md strong{color:var(--pinkD);font-weight:800}
+.md hr{border:0;border-top:3px dashed var(--line);margin:1em 0}
+
+/* 縮圖 */
+#gridBody{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.thumb{background:var(--card);border:3px solid var(--line2);border-radius:18px;overflow:hidden;cursor:pointer;
+  transition:.15s;padding:0;box-shadow:0 4px 0 var(--shadow)}
+.thumb:hover{border-color:var(--pink);transform:translateY(-3px);box-shadow:0 7px 0 rgba(255,92,158,.3)}
+.thumb.cur{border-color:var(--green);box-shadow:0 4px 0 rgba(95,191,106,.4);outline:3px dashed #A6DDAC;outline-offset:3px}
+.thumb img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#fff;display:block;border-bottom:2.5px solid var(--line)}
+.thumb .cap{display:flex;justify-content:space-between;gap:6px;padding:8px 11px;font-size:13px;font-weight:700;color:var(--dim)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--green);align-self:center;box-shadow:0 0 0 2px #DFF5E1}
+
+/* 筆記側欄 */
+#notePanel{position:fixed;right:0;top:calc(var(--bar) + 3px);bottom:0;width:min(430px,92vw);z-index:50;
+  background:var(--panel);border-left:3px solid var(--line2);display:flex;flex-direction:column;
+  transform:translateX(102%);transition:transform .22s ease;box-shadow:-10px 0 30px rgba(150,120,70,.15)}
+#notePanel.show{transform:none}
+#noteText{flex:1 1 auto;width:100%;border:0;border-top:3px solid var(--line);padding:16px 18px;resize:none;outline:none;
+  font-size:15.5px;font-weight:500;line-height:30px;color:var(--txt);
+  background-color:#FFFDF6;
+  background-image:repeating-linear-gradient(#FFFDF6 0 29px,#E9DFC6 29px 30px);
+  background-attachment:local}
+#noteFoot{padding:10px 14px;border-top:3px solid var(--line);color:var(--dim);font-size:12.5px;font-weight:700;
+  display:flex;gap:8px;align-items:center;background:var(--bg2)}
+
+/* 白板 */
+#boardCanvasWrap{flex:1 1 auto;position:relative;padding:14px;min-height:0;
+  background:radial-gradient(circle at 12% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px) 0 0/34px 34px,var(--bg)}
+#board{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);
+  background:#fff;border-radius:18px;touch-action:none;
+  box-shadow:0 0 0 4px #fff,0 0 0 7px var(--line2),0 14px 30px rgba(150,120,70,.25)}
+
+kbd{background:var(--card);border:2px solid var(--line2);border-bottom-width:4px;border-radius:9px;
+  padding:2px 9px;font-size:12.5px;font-weight:700;font-family:ui-monospace,monospace;color:var(--txt)}
+table.keys{width:100%;border-collapse:collapse;max-width:720px}
+table.keys td{padding:9px 8px;border-bottom:2px dashed var(--line);font-size:14.5px}
+table.keys td:first-child{width:200px;white-space:nowrap}
+
+#toast{position:fixed;left:50%;bottom:calc(var(--bar) + 22px);transform:translate(-50%,16px);z-index:95;
+  background:var(--card);border:3px solid var(--pink);border-radius:999px;padding:11px 22px;font-size:14.5px;
+  font-weight:700;color:var(--txt);box-shadow:0 5px 0 rgba(255,92,158,.35);
+  opacity:0;pointer-events:none;transition:.2s;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* 啟動 / 錯誤畫面 */
+#loader{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:18px;text-align:center;padding:26px;
+  background:radial-gradient(circle at 12% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px) 0 0/34px 34px,
+    linear-gradient(180deg,#DCF1FF,#FFF7E4)}
+.spin{width:48px;height:48px;border:5px solid #F1E3C4;border-top-color:var(--pink);border-radius:50%;
+  animation:sp .8s linear infinite}
+.spin.sm{width:32px;height:32px;border-width:4px}
+@keyframes sp{to{transform:rotate(360deg)}}
+#loadBar{width:min(340px,76vw);height:14px;border-radius:99px;background:#FFFDF6;overflow:hidden;
+  border:3px solid var(--line2);box-shadow:0 3px 0 var(--shadow)}
+#loadFill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--pink),var(--orange),var(--green));transition:width .25s}
+#loadMsg{color:var(--txt);font-size:15px;font-weight:700}
+#loadPct{font-variant-numeric:tabular-nums;font-size:13.5px;color:var(--dim);font-weight:700}
+code{background:#FFF3C4;padding:2px 8px;border-radius:7px;color:#B4571A;font-size:13px;font-weight:700}
+
+#err{position:fixed;inset:0;z-index:99;display:none;align-items:center;justify-content:center;
+  padding:26px;overflow:auto;
+  background:radial-gradient(circle at 12% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px) 0 0/34px 34px,
+    linear-gradient(180deg,#DCF1FF,#FFF7E4)}
+#err.show{display:flex}
+.errbox{max-width:780px;width:100%;background:var(--card);border:3.5px solid var(--line2);border-radius:26px;padding:28px;
+  box-shadow:0 7px 0 var(--shadow),0 22px 50px rgba(150,120,70,.25)}
+.errbox h2{margin:0 0 8px;font-size:30px;font-weight:800;color:var(--pinkD)}
+.errbox .sub{color:var(--dim);font-size:14.5px;line-height:1.9;margin-bottom:18px;font-weight:500}
+.errlist{display:flex;flex-direction:column;gap:10px;margin:16px 0 20px}
+.errlist button{display:flex;justify-content:space-between;gap:10px;align-items:center;text-align:left;
+  background:#FFFDF6;border:3px solid var(--line);border-radius:18px;padding:13px 16px;transition:.13s;font-weight:700}
+.errlist button:hover{border-color:var(--green);background:#F2FBF3;transform:translateY(-2px)}
+.errlist small{color:var(--dim);white-space:nowrap;font-weight:700}
+
+@media(max-width:640px){
+  :root{--bar:54px}
+  .brand{font-size:15px}
+  .btn{min-width:40px;height:40px;padding:0 11px}
+  #chapSel,#pagebox,#pre{height:40px}
+  #tools{right:10px;top:10px;padding:8px}
+  #chapSel{max-width:44vw}
+  .obody{padding:14px 12px}
+  .card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header id="topbar">
+    <span class="brand" id="siteTitle">投影片學習網</span>
+    <button class="btn" id="bHome" title="章節目錄 (C)"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">目錄</span></button>
+    <select id="chapSel" title="切換章節"></select>
+    <div id="pre"><span id="preTxt">預載中</span><span id="preBar"><span id="preFill"></span></span></div>
+    <span class="spacer"></span>
+    <button class="btn" id="bInfo" title="本章簡介 (I)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span class="lbl">簡介</span></button>
+    <button class="btn" id="bGrid" title="投影片總覽 (G)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span class="lbl">總覽</span></button>
+    <button class="btn" id="bNote" title="文字筆記 (N)"><svg viewBox="0 0 24 24"><path d="M4 4h16v12l-4 4H4z"/><path d="M8 9h8M8 13h5"/></svg><span class="lbl">筆記</span></button>
+    <button class="btn" id="bBoard" title="白板 (B)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21l4-4 4 4"/></svg><span class="lbl">白板</span></button>
+    <button class="btn" id="bShare" title="分享到 Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1z"/></svg><span class="lbl">分享</span></button>
+    <button class="btn" id="bData" title="匯出／匯入筆記"><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 19h16"/></svg><span class="lbl">筆記檔</span></button>
+    <button class="btn" id="bHelp" title="說明 (?)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.2 2.4c-.7.3-.7 1-.7 1.6"/><path d="M12 17h.01"/></svg></button>
+    <button class="btn" id="bFull" title="全螢幕 (F)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+  </header>
+
+  <main id="stage" class="pan">
+    <div id="wrap">
+      <img id="slideImg" alt="投影片">
+      <canvas id="ink"></canvas>
+    </div>
+    <div id="topline"></div>
+    <div id="slideSpin"><div class="spin sm"></div><span>投影片載入中⋯</span></div>
+    <button class="edge" id="edgeL" aria-label="上一頁">‹</button>
+    <button class="edge" id="edgeR" aria-label="下一頁">›</button>
+    <div id="chapTag"></div>
+    <div id="zoomTag">100%</div>
+
+    <div id="tools">
+      <button class="btn" id="tPen" title="畫筆 (P)"><svg viewBox="0 0 24 24"><path d="M3 21l4-1 11-11a2.1 2.1 0 0 0-3-3L4 17z"/></svg></button>
+      <button class="btn" id="tMark" title="螢光筆 (M)"><svg viewBox="0 0 24 24"><path d="M5 19h14"/><path d="M8 15l8-8 3 3-8 8H8z"/></svg></button>
+      <button class="btn" id="tErase" title="橡皮擦 (E)"><svg viewBox="0 0 24 24"><path d="M4 16l8-8 6 6-6 6H8z"/><path d="M3 21h18"/></svg></button>
+      <div class="hr"></div>
+      <div class="swatches" id="swatches"></div>
+      <input type="range" id="sizeRange" min="1" max="20" step="1" value="4" title="粗細">
+      <div class="hr"></div>
+      <button class="btn" id="tUndo" title="復原 (Ctrl+Z)"><svg viewBox="0 0 24 24"><path d="M9 14l-4-4 4-4"/><path d="M5 10h9a5 5 0 0 1 0 10h-3"/></svg></button>
+      <button class="btn" id="tClear" title="清除本頁手繪"><svg viewBox="0 0 24 24"><path d="M5 7h14M9 7V5h6v2M7 7l1 13h8l1-13"/></svg></button>
+      <button class="btn" id="tPng" title="匯出本頁 PNG（含標註）"><svg viewBox="0 0 24 24"><path d="M12 3v11M8 10l4 4 4-4"/><path d="M4 19h16"/></svg></button>
+    </div>
+  </main>
+
+  <footer id="bottombar">
+    <button class="btn" id="bPrev"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><span class="lbl">上一頁</span></button>
+    <div id="pagebox"><input id="pageInput" inputmode="numeric" value="1"><span>/</span><span id="pageTotal">0</span></div>
+    <button class="btn" id="bNext"><span class="lbl">下一頁</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+    <span class="spacer"></span>
+    <button class="btn" id="bDraw" title="標註模式 (D)"><svg viewBox="0 0 24 24"><path d="M3 21l4-1 11-11a2.1 2.1 0 0 0-3-3L4 17z"/></svg><span class="lbl">標註</span></button>
+    <button class="btn" id="bZoomOut" title="縮小 (-)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M20 20l-4-4"/></svg></button>
+    <button class="btn" id="bZoomReset" title="還原 (0)">100%</button>
+    <button class="btn" id="bZoomIn" title="放大 (+)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M11 8v6M20 20l-4-4"/></svg></button>
+  </footer>
+</div>
+
+<!-- 筆記側欄 -->
+<aside id="notePanel">
+  <div class="ohead"><span class="otitle">📝 <span id="noteWhere">第 1 頁</span>文字筆記</span><span class="spacer"></span>
+    <button class="btn" id="noteClose">✕</button></div>
+  <textarea id="noteText" placeholder="在這裡寫下這一頁的重點、疑問、補充⋯⋯（自動儲存）"></textarea>
+  <div id="noteFoot"><span id="noteStat">已儲存</span><span class="spacer"></span><span>Ctrl/⌘ + Enter 關閉</span></div>
+</aside>
+
+<!-- 章節目錄 -->
+<div class="overlay" id="homeOv">
+  <div class="ohead"><span class="otitle">📚 章節目錄</span><span class="spacer"></span>
+    <button class="btn" id="homeClose">✕ 關閉</button></div>
+  <div class="obody"><div id="chapList"></div></div>
+</div>
+
+<!-- 本章簡介 -->
+<div class="overlay" id="infoOv">
+  <div class="ohead"><span class="otitle" id="infoTitle">章節簡介</span><span class="spacer"></span>
+    <button class="btn" id="infoClose">✕ 關閉</button></div>
+  <div class="obody"><div class="md" id="infoBody" style="max-width:760px;margin:0 auto;font-size:15px"></div></div>
+</div>
+
+<!-- 總覽 -->
+<div class="overlay" id="gridOv">
+  <div class="ohead"><span class="otitle" id="gridTitle">投影片總覽</span><span class="spacer"></span>
+    <button class="btn" id="gridClose">✕ 關閉</button></div>
+  <div class="obody"><div id="gridBody"></div></div>
+</div>
+
+<!-- 白板 -->
+<div class="overlay" id="boardOv">
+  <div class="ohead">
+    <span class="otitle">🖍️ 白板（<span id="boardWhere">第 1 頁</span>）</span>
+    <span class="spacer"></span>
+    <button class="btn" id="bdPen">畫筆</button>
+    <button class="btn" id="bdErase">橡皮擦</button>
+    <input type="color" id="bdColor" value="#111827" style="width:38px;height:38px;border:1px solid var(--line);border-radius:999px;background:#fff;flex:0 0 auto;padding:2px">
+    <input type="range" id="bdSize" min="1" max="24" value="4" style="width:90px;flex:0 0 auto">
+    <button class="btn" id="bdUndo">復原</button>
+    <button class="btn" id="bdClear">清空</button>
+    <button class="btn" id="bdPng">存成 PNG</button>
+    <button class="btn" id="boardClose">✕ 關閉</button>
+  </div>
+  <div id="boardCanvasWrap"><canvas id="board"></canvas></div>
+</div>
+
+<!-- 說明 -->
+<div class="overlay" id="helpOv">
+  <div class="ohead"><span class="otitle">使用說明</span><span class="spacer"></span><button class="btn" id="helpClose">✕ 關閉</button></div>
+  <div class="obody">
+    <table class="keys">
+      <tr><td><kbd>→</kbd> <kbd>←</kbd> <kbd>空白鍵</kbd></td><td>下一頁 / 上一頁（到底會提示切換下一章）</td></tr>
+      <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>本章第一頁 / 最後一頁</td></tr>
+      <tr><td>輸入頁碼後 <kbd>Enter</kbd></td><td>跳到指定頁</td></tr>
+      <tr><td><kbd>C</kbd></td><td>章節目錄</td></tr>
+      <tr><td><kbd>[</kbd> <kbd>]</kbd></td><td>上一章 / 下一章</td></tr>
+      <tr><td><kbd>I</kbd></td><td>本章簡介</td></tr>
+      <tr><td><kbd>F</kbd></td><td>全螢幕切換</td></tr>
+      <tr><td><kbd>+</kbd> <kbd>-</kbd> <kbd>0</kbd> / 滾輪</td><td>放大 / 縮小 / 還原；放大後可拖曳平移</td></tr>
+      <tr><td><kbd>G</kbd></td><td>投影片總覽（點縮圖跳頁）</td></tr>
+      <tr><td><kbd>N</kbd></td><td>文字筆記側欄</td></tr>
+      <tr><td><kbd>D</kbd></td><td>標註模式（直接畫在投影片上）</td></tr>
+      <tr><td><kbd>P</kbd> <kbd>M</kbd> <kbd>E</kbd></td><td>畫筆 / 螢光筆 / 橡皮擦</td></tr>
+      <tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>復原上一筆</td></tr>
+      <tr><td><kbd>B</kbd></td><td>白板（每頁一張獨立 canvas）</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>關閉目前面板</td></tr>
+    </table>
+    <div class="md" style="max-width:700px;margin-top:20px">
+      <p><b>網址參數：</b><code>?ch=章節資料夾名稱</code> 直接開啟指定章節，加上 <code>&p=12</code> 可直接跳到第 12 頁。
+      例如 <code>index.html?ch=ch02-model-runner&p=5</code>。找不到該章節時會顯示「無此章節」並列出所有可用章節。</p>
+      <p><b>手機操作：</b>左右滑動翻頁、雙指縮放與平移、雙擊放大。點下方「標註」即可用手指或觸控筆直接畫在投影片上（標註模式下單指用於繪圖，改用雙指平移）。</p>
+      <p><b>資料儲存：</b>文字筆記、投影片標註、白板全部自動存在你這台裝置的瀏覽器裡（localStorage），<b>依章節分開存放</b>。
+      換裝置或清除瀏覽資料前，請用上方「筆記檔 → 匯出 JSON」備份，到新裝置再「匯入 JSON」還原（匯入時可選擇合併或取代）。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 筆記檔：匯出 / 匯入 -->
+<div class="overlay modal" id="dataOv">
+  <div class="card">
+    <h2>💾 筆記檔</h2>
+    <div class="sub" id="dataStat"></div>
+    <button class="bigbtn" id="dExport">
+      <span class="ic">⬇️</span>
+      <span><b>匯出成 JSON 檔（備份）</b><span>把所有章節的文字筆記、投影片標註、白板存成一個檔案下載。</span></span>
+    </button>
+    <button class="bigbtn hot" id="dImport">
+      <span class="ic">📂</span>
+      <span><b>從 JSON 檔載入筆記</b><span>選擇之前匯出的檔案，把筆記還原到這台裝置。</span></span>
+    </button>
+    <div id="drop">⋯⋯或把 <b>.json</b> 檔直接拖到這裡放開</div>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn" id="dataClose">關閉</button>
+    </div>
+  </div>
+</div>
+
+<!-- 匯入確認 -->
+<div class="overlay modal" id="impOv">
+  <div class="card">
+    <h2>📂 載入筆記</h2>
+    <div class="sub" id="impStat"></div>
+    <button class="bigbtn hot" id="impMerge">
+      <span class="ic">🔀</span>
+      <span><b>合併</b><span>保留這台裝置上現有的筆記；同一頁若兩邊都有，以匯入的內容為準。</span></span>
+    </button>
+    <button class="bigbtn" id="impReplace">
+      <span class="ic">♻️</span>
+      <span><b>完全取代</b><span>清掉這台裝置上現有的筆記，只留匯入的內容。</span></span>
+    </button>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn" id="impCancel">取消</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- 無此章節 / 找不到投影片 -->
+<div id="err">
+  <div class="errbox">
+    <h2 id="errTitle">無此章節</h2>
+    <div class="sub" id="errSub"></div>
+    <div class="errlist" id="errList"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn primary" id="errHome">📚 前往章節目錄</button>
+      <button class="btn" id="errReload">重新載入</button>
+    </div>
+  </div>
+</div>
+
+<div id="loader">
+  <div class="spin"></div>
+  <div id="loadBar"><div id="loadFill"></div></div>
+  <div id="loadMsg">載入章節資料⋯</div>
+  <div id="loadPct">0%</div>
+</div>
+
+<input type="file" id="importFile" accept="application/json,.json" style="display:none">
+
+<script>
+"use strict";
+/* =========================================================
+   投影片學習網 v2 — 多章節 / 網址參數 / 筆記匯入匯出 / 載入進度
+   投影片來源優先序：chapters.json → slides.json → 自動偵測
+   ========================================================= */
+
+const MAX_PROBE = 300;
+const PAD = 16;
+const $ = id => document.getElementById(id);
+
+const S = {
+  chapters: [],        // [{id,title,intro,dir,slides:[{src,title}]}]
+  ci: 0,               // 目前章節索引
+  slides: [],          // 目前章節的投影片
+  i: 0,
+  zoom:1, tx:0, ty:0, baseW:0, baseH:0,
+  drawMode:false, tool:'pen', color:'#ef2f8f', size:4,
+  db: {v:2, chapters:{}},          // 所有章節的筆記
+  key: 'slideStudy:' + location.pathname,
+};
+const COLORS = ['#ef2f8f','#ff3b30','#ff9f0a','#ffd60a','#22c55e','#22d3ee','#2f6bff','#111827'];
+const chap = () => S.chapters[S.ci] || {id:'', title:'', slides:[]};
+
+/* ---------- 共用 ---------- */
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'),2200); }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function download(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+
+/* ---------- 筆記資料（依章節分開） ---------- */
+function bucket(cid){ if(!S.db.chapters[cid]) S.db.chapters[cid]={}; return S.db.chapters[cid]; }
+function note(i, cid){ const b=bucket(cid||chap().id);
+  if(!b[i]) b[i]={t:'',ink:[],bd:[]};
+  const n=b[i]; n.ink=n.ink||[]; n.bd=n.bd||[]; n.t=n.t||''; return n; }
+function hasContent(i,cid){ const b=S.db.chapters[cid||chap().id]; const n=b&&b[i];
+  return !!n && ((n.t&&n.t.trim())||(n.ink&&n.ink.length)||(n.bd&&n.bd.length)); }
+function chapNoteCount(cid){ const b=S.db.chapters[cid]; if(!b) return 0;
+  return Object.keys(b).filter(k=>hasContent(k,cid)).length; }
+/* 清掉「只是瀏覽過、沒有任何內容」的空白頁，避免儲存檔越積越大 */
+function prune(){
+  for(const [cid,b] of Object.entries(S.db.chapters)){
+    for(const [k,n] of Object.entries(b))
+      if(!n || (!(n.t&&n.t.trim()) && !(n.ink&&n.ink.length) && !(n.bd&&n.bd.length))) delete b[k];
+    if(!Object.keys(b).length) delete S.db.chapters[cid];
+  }
+}
+function save(){ prune(); try{ localStorage.setItem(S.key, JSON.stringify(S.db)); }
+  catch(e){ toast('瀏覽器儲存空間已滿，請先匯出備份'); } }
+const saveSoon=(()=>{ let t; return ()=>{ clearTimeout(t); t=setTimeout(save,400); }; })();
+function loadDB(){
+  let raw=null; try{ raw=JSON.parse(localStorage.getItem(S.key)||'null'); }catch(e){}
+  S.db = normalize(raw) || {v:2, chapters:{}};
+}
+/* 把任何版本的資料轉成 v2 格式 */
+function normalize(obj, fallbackChapter){
+  if(!obj || typeof obj!=='object') return null;
+  const src = obj.notes && typeof obj.notes==='object' && (obj.notes.chapters||obj.version||obj.v) ? obj.notes : obj;
+  if(src.chapters && typeof src.chapters==='object') return {v:2, chapters:deepClean(src.chapters)};
+  // v1：{"0":{t,ink,bd}, ...} 或 {notes:{...}}
+  const flat = (obj.notes && !obj.notes.chapters) ? obj.notes : obj;
+  const keys = Object.keys(flat).filter(k=>/^\d+$/.test(k));
+  if(keys.length){
+    const cid = fallbackChapter || (S.chapters[0]&&S.chapters[0].id) || 'main';
+    const b={}; keys.forEach(k=>b[k]=flat[k]);
+    return {v:2, chapters:deepClean({[cid]:b})};
+  }
+  return null;
+}
+function deepClean(chs){
+  const out={};
+  for(const [cid,b] of Object.entries(chs||{})){
+    if(!b || typeof b!=='object') continue;
+    const nb={};
+    for(const [k,n] of Object.entries(b)){
+      if(!/^\d+$/.test(k) || !n || typeof n!=='object') continue;
+      nb[k]={ t: typeof n.t==='string'? n.t : '',
+              ink: Array.isArray(n.ink)? n.ink:[],
+              bd:  Array.isArray(n.bd) ? n.bd :[] };
+    }
+    if(Object.keys(nb).length) out[cid]=nb;
+  }
+  return out;
+}
+
+/* ---------- 迷你 Markdown ---------- */
+function md(src){
+  if(!src) return '';
+  const inline = s => esc(s)
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<em>$2</em>')
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  const out=[]; let list=null, code=false, buf=[];
+  const closeList=()=>{ if(list){ out.push(`</${list}>`); list=null; } };
+  const closeP=()=>{ if(buf.length){ out.push('<p>'+buf.map(inline).join('<br>')+'</p>'); buf=[]; } };
+  for(const raw of String(src).split('\n')){
+    const l=raw.replace(/\s+$/,'');
+    if(/^```/.test(l)){ closeP(); closeList();
+      if(code){ out.push('</code></pre>'); code=false; } else { out.push('<pre><code>'); code=true; }
+      continue; }
+    if(code){ out.push(esc(raw)+'\n'); continue; }
+    if(!l.trim()){ closeP(); closeList(); continue; }
+    let m;
+    if((m=l.match(/^(#{1,4})\s+(.*)$/))){ closeP(); closeList();
+      const n=Math.min(3,m[1].length); out.push(`<h${n}>${inline(m[2])}</h${n}>`); continue; }
+    if(/^\s*([-*_])\s*\1\s*\1+\s*$/.test(l)){ closeP(); closeList(); out.push('<hr>'); continue; }
+    if((m=l.match(/^\s*[-*+]\s+(.*)$/))){ closeP();
+      if(list!=='ul'){ closeList(); out.push('<ul>'); list='ul'; }
+      out.push('<li>'+inline(m[1])+'</li>'); continue; }
+    if((m=l.match(/^\s*\d+[.)]\s+(.*)$/))){ closeP();
+      if(list!=='ol'){ closeList(); out.push('<ol>'); list='ol'; }
+      out.push('<li>'+inline(m[1])+'</li>'); continue; }
+    if((m=l.match(/^>\s?(.*)$/))){ closeP(); closeList();
+      out.push('<blockquote>'+inline(m[1])+'</blockquote>'); continue; }
+    closeList(); buf.push(l);
+  }
+  if(code) out.push('</code></pre>');
+  closeP(); closeList();
+  return out.join('');
+}
+
+/* ---------- 載入章節 ---------- */
+function setProgress(p, msg){
+  $('loadFill').style.width = Math.max(0,Math.min(100,p))+'%';
+  $('loadPct').textContent = Math.round(p)+'%';
+  if(msg) $('loadMsg').textContent = msg;
+}
+function fixUrl(f, dir){ return /^(https?:)?\/\//.test(f) || f.startsWith('/') || f.startsWith('./') ? f : dir+f; }
+
+async function loadChapters(){
+  // 1) chapters.json（多章節）
+  try{
+    const r=await fetch('chapters.json',{cache:'no-cache'});
+    if(r.ok){
+      const j=await r.json();
+      if(j.site) { $('siteTitle').textContent=j.site; document.title=j.site+' · 投影片學習網'; }
+      const list=(j.chapters||[]).map((c,k)=>{
+        const dir=(c.dir||('slides/'+c.id+'/')).replace(/\/?$/,'/');
+        return { id:c.id||('ch'+(k+1)), title:c.title||('第 '+(k+1)+' 章'),
+                 intro:c.intro||'', dir,
+                 slides:(c.slides||[]).map((f,n)=>({src:fixUrl(typeof f==='string'?f:f.file,dir),
+                                                    title:(typeof f==='object'&&f.title)||('第 '+(n+1)+' 頁')})) };
+      }).filter(c=>c.slides.length);
+      if(list.length) return list;
+    }
+  }catch(e){}
+  // 2) slides.json（單章節，相容 v1）
+  try{
+    const r=await fetch('slides.json',{cache:'no-cache'});
+    if(r.ok){
+      const j=await r.json();
+      const arr=Array.isArray(j)?j:(j.slides||[]);
+      const dir=((j&&j.dir)||'slides/').replace(/\/?$/,'/');
+      if(j&&j.title){ $('siteTitle').textContent=j.title; document.title=j.title+' · 投影片學習網'; }
+      if(arr.length) return [{id:'main', title:(j&&j.title)||'全部投影片', intro:(j&&j.intro)||'', dir,
+        slides:arr.map((f,n)=>({src:fixUrl(typeof f==='string'?f:f.file,dir),
+                                title:(typeof f==='object'&&f.title)||('第 '+(n+1)+' 頁')}))}];
+    }
+  }catch(e){}
+  // 3) 自動偵測 slides/slide-001.png…
+  const found=await probe();
+  return found.length ? [{id:'main', title:'全部投影片', intro:'', dir:'slides/', slides:found}] : [];
+}
+function imgOK(src){ return new Promise(res=>{ const im=new Image(); im.onload=()=>res(true); im.onerror=()=>res(false); im.src=src; }); }
+async function probe(){
+  const pats=[ n=>`slides/slide-${String(n).padStart(3,'0')}.png`,
+               n=>`slides/slide-${String(n).padStart(2,'0')}.png`,
+               n=>`slides/slide${String(n).padStart(3,'0')}.png`,
+               n=>`slides/${String(n).padStart(3,'0')}.png`,
+               n=>`slides/${n}.png`,
+               n=>`slides/slide-${String(n).padStart(3,'0')}.jpg` ];
+  let pat=null;
+  for(const p of pats){ if(await imgOK(p(1))){ pat=p; break; } }
+  if(!pat) return [];
+  const out=[{src:pat(1),title:'第 1 頁'}];
+  for(let n=2;n<=MAX_PROBE;n++){ if(await imgOK(pat(n))) out.push({src:pat(n),title:'第 '+n+' 頁'}); else break; }
+  return out;
+}
+
+/* ---------- 背景預載 + 進度 ---------- */
+let preToken=0;
+function prefetchChapter(){
+  const my=++preToken, list=chap().slides.slice();
+  if(list.length<2){ $('pre').classList.remove('show'); return; }
+  let done=0;
+  $('pre').classList.add('show');
+  const step=()=>{
+    const pct=Math.round(done/list.length*100);
+    $('preFill').style.width=pct+'%';
+    $('preTxt').textContent=`預載 ${done}/${list.length}`;
+    if(done>=list.length){ setTimeout(()=>{ if(my===preToken) $('pre').classList.remove('show'); },1200);
+      $('preTxt').textContent='已預載完成'; }
+  };
+  step();
+  let k=0;
+  const next=()=>{
+    if(my!==preToken) return;
+    if(k>=list.length) return;
+    const im=new Image(); im.src=list[k++].src;
+    const fin=()=>{ done++; step(); if(my===preToken) setTimeout(next,0); };
+    if(im.complete) fin(); else { im.onload=fin; im.onerror=fin; }
+  };
+  for(let c=0;c<3;c++) next();   // 三條併發
+}
+
+/* ---------- 版面 / 縮放 ---------- */
+function layout(){
+  const st=$('stage'), im=$('slideImg');
+  const aw=st.clientWidth-PAD*2, ah=st.clientHeight-PAD*2;
+  const ar=(im.naturalWidth&&im.naturalHeight)? im.naturalWidth/im.naturalHeight : 16/9;
+  let w=aw, h=w/ar; if(h>ah){ h=ah; w=h*ar; }
+  S.baseW=Math.max(40,Math.round(w)); S.baseH=Math.max(30,Math.round(h));
+  const wrap=$('wrap'); wrap.style.width=S.baseW+'px'; wrap.style.height=S.baseH+'px';
+  clampCenter(); applyTransform(); sizeInk();
+}
+function clampCenter(){
+  const st=$('stage'), vw=st.clientWidth, vh=st.clientHeight;
+  const w=S.baseW*S.zoom, h=S.baseH*S.zoom;
+  S.tx = w<=vw ? (vw-w)/2 : Math.min(0,Math.max(vw-w,S.tx));
+  S.ty = h<=vh ? (vh-h)/2 : Math.min(0,Math.max(vh-h,S.ty));
+}
+function applyTransform(){
+  $('wrap').style.transform=`translate(${S.tx}px,${S.ty}px) scale(${S.zoom})`;
+  $('zoomTag').textContent=Math.round(S.zoom*100)+'%';
+}
+function zoomAt(f,cx,cy){
+  const st=$('stage').getBoundingClientRect();
+  const px=(cx!==undefined?cx-st.left:st.width/2), py=(cy!==undefined?cy-st.top:st.height/2);
+  const z0=S.zoom, z=Math.min(8,Math.max(0.2,z0*f)); if(z===z0) return;
+  S.tx=px-(px-S.tx)*(z/z0); S.ty=py-(py-S.ty)*(z/z0);
+  S.zoom=z; clampCenter(); applyTransform();
+}
+function resetZoom(){ S.zoom=1; clampCenter(); applyTransform(); }
+
+/* ---------- 畫布 ---------- */
+function sizeInk(){
+  const c=$('ink'), dpr=Math.min(3,window.devicePixelRatio||1);
+  c.width=Math.round(S.baseW*dpr); c.height=Math.round(S.baseH*dpr); redraw();
+}
+function drawStrokes(ctx,strokes,W,H){
+  ctx.lineCap='round'; ctx.lineJoin='round';
+  for(const s of strokes||[]){
+    if(!s || !s.p || s.p.length<1) continue;
+    ctx.globalAlpha=s.a ?? 1; ctx.strokeStyle=s.c||'#000'; ctx.lineWidth=Math.max(1,(s.w||0.004)*W);
+    ctx.beginPath(); ctx.moveTo(s.p[0][0]*W,s.p[0][1]*H);
+    if(s.p.length===1) ctx.lineTo(s.p[0][0]*W+0.1,s.p[0][1]*H);
+    for(let k=1;k<s.p.length;k++) ctx.lineTo(s.p[k][0]*W,s.p[k][1]*H);
+    ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+}
+function redraw(){ const c=$('ink'), ctx=c.getContext('2d');
+  ctx.clearRect(0,0,c.width,c.height); drawStrokes(ctx,note(S.i).ink,c.width,c.height); }
+
+/* ---------- 章節與翻頁 ---------- */
+function syncUrl(){
+  const q=new URLSearchParams();
+  if(S.chapters.length>1 || chap().id!=='main') q.set('ch',chap().id);
+  q.set('p',S.i+1);
+  try{ history.replaceState(null,'', location.pathname+'?'+q.toString()); }catch(e){}
+}
+function openChapter(idx, page){
+  idx=Math.min(S.chapters.length-1,Math.max(0,idx));
+  S.ci=idx; S.slides=chap().slides;
+  $('chapSel').value=String(idx);
+  $('chapTag').textContent=(S.chapters.length>1? chap().title : '');
+  $('chapTag').style.display=S.chapters.length>1?'block':'none';
+  $('gridTitle').textContent='投影片總覽 — '+chap().title;
+  $('pageTotal').textContent=S.slides.length;
+  buildGrid();
+  go(page||0,true);
+  prefetchChapter();
+}
+function go(n,force){
+  if(!S.slides.length) return;
+  n=Math.min(S.slides.length-1,Math.max(0,n));
+  if(n===S.i && !force) return;
+  S.i=n;
+  const im=$('slideImg');
+  $('topline').classList.add('show'); $('slideSpin').classList.add('show');
+  im.onload=()=>{ $('topline').classList.remove('show'); $('slideSpin').classList.remove('show'); layout(); };
+  im.onerror=()=>{ $('topline').classList.remove('show'); $('slideSpin').classList.remove('show');
+    toast('這一頁的圖片載入失敗：'+S.slides[n].src); };
+  im.src=S.slides[n].src; im.alt=S.slides[n].title;
+  if(im.complete && im.naturalWidth){ $('topline').classList.remove('show'); $('slideSpin').classList.remove('show'); layout(); }
+  const where=(S.chapters.length>1? chap().title+'．':'')+'第 '+(n+1)+' 頁';
+  $('pageInput').value=n+1; $('noteWhere').textContent=where; $('boardWhere').textContent=where;
+  $('noteText').value=note(n).t||'';
+  resetZoom(); redraw();
+  document.querySelectorAll('#gridBody .thumb').forEach((t,k)=>t.classList.toggle('cur',k===n));
+  if($('boardOv').classList.contains('show')) drawBoard();
+  syncUrl();
+}
+function next(){
+  if(S.i<S.slides.length-1) return go(S.i+1);
+  if(S.ci<S.chapters.length-1){ toast('已是本章最後一頁 → 進入「'+S.chapters[S.ci+1].title+'」'); openChapter(S.ci+1,0); }
+  else toast('已經是最後一頁了');
+}
+function prev(){
+  if(S.i>0) return go(S.i-1);
+  if(S.ci>0){ const p=S.chapters[S.ci-1]; toast('回到「'+p.title+'」'); openChapter(S.ci-1,p.slides.length-1); }
+  else toast('已經是第一頁了');
+}
+
+/* ---------- 手繪 ---------- */
+let drawing=null,panning=null,pinch=null;
+function ptOf(e){ const r=$('wrap').getBoundingClientRect();
+  return [(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]; }
+function eraseAt(p,strokes){ const R=0.022; let hit=false;
+  for(let k=strokes.length-1;k>=0;k--){
+    if(strokes[k].p.some(q=>Math.hypot(q[0]-p[0],q[1]-p[1])<R)){ strokes.splice(k,1); hit=true; } }
+  return hit; }
+function newStroke(){ const m=S.tool==='marker';
+  return {c:S.color, w:(m?S.size*3.2:S.size)/1000, a:m?0.35:1, p:[]}; }
+
+$('ink').addEventListener('pointerdown',e=>{
+  if(!S.drawMode) return;
+  if(e.pointerType==='touch'&&pinch) return;
+  e.preventDefault(); $('ink').setPointerCapture(e.pointerId);
+  const p=ptOf(e), n=note(S.i);
+  if(S.tool==='eraser'){ drawing={erase:true}; if(eraseAt(p,n.ink)){ redraw(); saveSoon(); } return; }
+  const s=newStroke(); s.p.push(p); n.ink.push(s); drawing={s}; redraw();
+});
+$('ink').addEventListener('pointermove',e=>{
+  if(!drawing) return; e.preventDefault();
+  const p=ptOf(e), n=note(S.i);
+  if(drawing.erase){ if(eraseAt(p,n.ink)){ redraw(); saveSoon(); } return; }
+  const last=drawing.s.p[drawing.s.p.length-1];
+  if(Math.hypot(p[0]-last[0],p[1]-last[1])<0.0015) return;
+  drawing.s.p.push(p); redraw();
+});
+function endDraw(){ if(!drawing) return; drawing=null; save(); refreshThumbDots(); }
+['pointerup','pointercancel','pointerleave'].forEach(t=>$('ink').addEventListener(t,endDraw));
+
+/* ---------- 平移 / 觸控 ---------- */
+const stage=$('stage');
+stage.addEventListener('pointerdown',e=>{
+  if(S.drawMode&&e.target.id==='ink'&&e.pointerType!=='touch') return;
+  if(e.target.closest('#tools')||e.target.closest('.edge')) return;
+  if(e.pointerType==='touch'){ touchStart(e); return; }
+  panning={x:e.clientX,y:e.clientY,tx:S.tx,ty:S.ty}; stage.classList.add('dragging');
+});
+stage.addEventListener('pointermove',e=>{
+  if(!panning) return;
+  S.tx=panning.tx+(e.clientX-panning.x); S.ty=panning.ty+(e.clientY-panning.y);
+  clampCenter(); applyTransform();
+});
+['pointerup','pointercancel','pointerleave'].forEach(t=>stage.addEventListener(t,()=>{
+  panning=null; stage.classList.remove('dragging'); }));
+stage.addEventListener('wheel',e=>{ e.preventDefault(); zoomAt(e.deltaY<0?1.12:1/1.12,e.clientX,e.clientY); },{passive:false});
+stage.addEventListener('dblclick',e=>{ zoomAt(S.zoom>1.2?1/S.zoom:2,e.clientX,e.clientY); });
+
+const touches=new Map();
+function touchStart(e){
+  touches.set(e.pointerId,{x:e.clientX,y:e.clientY,x0:e.clientX,y0:e.clientY,t:Date.now()});
+  if(touches.size===2){ drawing=null;
+    const [a,b]=[...touches.values()];
+    pinch={d:Math.hypot(a.x-b.x,a.y-b.y),z:S.zoom,cx:(a.x+b.x)/2,cy:(a.y+b.y)/2,tx:S.tx,ty:S.ty}; }
+}
+stage.addEventListener('pointermove',e=>{
+  if(e.pointerType!=='touch'||!touches.has(e.pointerId)) return;
+  const t=touches.get(e.pointerId); t.x=e.clientX; t.y=e.clientY;
+  if(touches.size===2&&pinch){
+    e.preventDefault();
+    const [a,b]=[...touches.values()];
+    const d=Math.hypot(a.x-b.x,a.y-b.y), cx=(a.x+b.x)/2, cy=(a.y+b.y)/2;
+    const st=stage.getBoundingClientRect();
+    const z=Math.min(8,Math.max(0.2,pinch.z*(d/pinch.d)));
+    S.tx=(cx-st.left)-((pinch.cx-st.left)-pinch.tx)*(z/pinch.z);
+    S.ty=(cy-st.top) -((pinch.cy-st.top) -pinch.ty)*(z/pinch.z);
+    S.zoom=z; clampCenter(); applyTransform();
+  }
+},{passive:false});
+stage.addEventListener('pointerup',e=>{
+  if(e.pointerType!=='touch') return;
+  const t=touches.get(e.pointerId); touches.delete(e.pointerId);
+  if(touches.size<2) pinch=null;
+  if(!t) return;
+  const dx=e.clientX-t.x0, dy=e.clientY-t.y0, dt=Date.now()-t.t;
+  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6&&dt<700&&S.zoom<=1.02&&!S.drawMode) dx<0?next():prev();
+});
+let tpan=null;
+stage.addEventListener('touchstart',e=>{
+  tpan=(e.touches.length===1&&S.zoom>1.02&&!S.drawMode)
+    ? {x:e.touches[0].clientX,y:e.touches[0].clientY,tx:S.tx,ty:S.ty} : null;
+},{passive:true});
+stage.addEventListener('touchmove',e=>{
+  if(!tpan||e.touches.length!==1) return;
+  S.tx=tpan.tx+(e.touches[0].clientX-tpan.x); S.ty=tpan.ty+(e.touches[0].clientY-tpan.y);
+  clampCenter(); applyTransform(); e.preventDefault();
+},{passive:false});
+stage.addEventListener('touchend',()=>{tpan=null;},{passive:true});
+
+/* ---------- 白板 ---------- */
+let bdDraw=null,bdTool='pen';
+function boardSize(){ const c=$('board'), dpr=Math.min(3,window.devicePixelRatio||1);
+  const r=c.getBoundingClientRect();
+  c.width=Math.max(10,Math.round(r.width*dpr)); c.height=Math.max(10,Math.round(r.height*dpr)); drawBoard(); }
+function drawBoard(){ const c=$('board'), ctx=c.getContext('2d');
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height); drawStrokes(ctx,note(S.i).bd,c.width,c.height); }
+function bdPt(e){ const r=$('board').getBoundingClientRect();
+  return [(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]; }
+$('board').addEventListener('pointerdown',e=>{
+  e.preventDefault(); $('board').setPointerCapture(e.pointerId);
+  const p=bdPt(e), n=note(S.i);
+  if(bdTool==='eraser'){ bdDraw={erase:true}; if(eraseAt(p,n.bd)){drawBoard();saveSoon();} return; }
+  n.bd.push({c:$('bdColor').value,w:(+$('bdSize').value)/1000,a:1,p:[p]});
+  bdDraw={s:n.bd[n.bd.length-1]}; drawBoard();
+});
+$('board').addEventListener('pointermove',e=>{
+  if(!bdDraw) return; e.preventDefault();
+  const p=bdPt(e), n=note(S.i);
+  if(bdDraw.erase){ if(eraseAt(p,n.bd)){drawBoard();saveSoon();} return; }
+  const last=bdDraw.s.p[bdDraw.s.p.length-1];
+  if(Math.hypot(p[0]-last[0],p[1]-last[1])<0.0015) return;
+  bdDraw.s.p.push(p); drawBoard();
+});
+['pointerup','pointercancel'].forEach(t=>$('board').addEventListener(t,()=>{
+  if(bdDraw){ bdDraw=null; save(); refreshThumbDots(); } }));
+function setBdTool(t){ bdTool=t; $('bdPen').classList.toggle('on',t==='pen'); $('bdErase').classList.toggle('on',t==='eraser'); }
+$('bdPen').onclick=()=>setBdTool('pen');
+$('bdErase').onclick=()=>setBdTool('eraser');
+$('bdUndo').onclick=()=>{ note(S.i).bd.pop(); drawBoard(); save(); };
+$('bdClear').onclick=()=>{ if(confirm('清空這一頁的白板內容？')){ note(S.i).bd=[]; drawBoard(); save(); refreshThumbDots(); } };
+$('bdPng').onclick=()=>{ const c=document.createElement('canvas'); c.width=1920; c.height=1080;
+  const ctx=c.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height);
+  drawStrokes(ctx,note(S.i).bd,c.width,c.height);
+  c.toBlob(b=>download(b,`白板-${chap().id}-第${S.i+1}頁.png`)); };
+
+/* ---------- 匯出 ---------- */
+function exportSlidePng(){
+  const im=$('slideImg'), W=im.naturalWidth||1920, H=im.naturalHeight||1080;
+  const c=document.createElement('canvas'); c.width=W; c.height=H;
+  const ctx=c.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,W,H);
+  try{ ctx.drawImage(im,0,0,W,H); }catch(e){}
+  drawStrokes(ctx,note(S.i).ink,W,H);
+  try{ c.toBlob(b=>download(b,`投影片-${chap().id}-第${S.i+1}頁-標註.png`)); }
+  catch(e){ toast('匯出失敗（圖片跨網域）'); }
+}
+function exportJson(){
+  prune();
+  const stat={}; for(const c of S.chapters){ const n=chapNoteCount(c.id); if(n) stat[c.id]=n; }
+  const data={ app:'slide-study', version:2, site:$('siteTitle').textContent,
+    deck:location.pathname, savedAt:new Date().toISOString(),
+    chaptersMeta:S.chapters.map(c=>({id:c.id,title:c.title,slides:c.slides.length})),
+    summary:stat, chapters:S.db.chapters };
+  download(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),
+    `投影片筆記-${new Date().toISOString().slice(0,10)}.json`);
+  toast('已匯出筆記 JSON（共 '+Object.values(stat).reduce((a,b)=>a+b,0)+' 頁有內容）');
+}
+let pendingImport=null;
+async function pickFile(f){
+  if(!f) return;
+  if(!/\.json$/i.test(f.name) && f.type && !/json/.test(f.type))
+    return alert('請選擇本網站匯出的 .json 筆記檔。\n（你選的是：'+f.name+'）');
+  let incoming=null;
+  try{ incoming=normalize(JSON.parse(await f.text()), chap().id); }
+  catch(err){ return alert('無法讀取「'+f.name+'」：內容不是有效的 JSON。'); }
+  if(!incoming || !Object.keys(incoming.chapters).length)
+    return alert('「'+f.name+'」裡沒有找到任何筆記內容。\n請確認是本網站「筆記檔 → 匯出成 JSON 檔」產生的檔案。');
+
+  const chs=Object.keys(incoming.chapters);
+  const unknown=chs.filter(c=>!S.chapters.some(x=>x.id===c));
+  const pages=chs.reduce((a,c)=>a+Object.keys(incoming.chapters[c]).length,0);
+  const rows=chs.map(c=>{
+    const t=(S.chapters.find(x=>x.id===c)||{}).title;
+    return `<li>${esc(t||c)}：${Object.keys(incoming.chapters[c]).length} 頁${t?'':'　<span style="color:var(--warn)">（目前沒有這個章節，仍會保留）</span>'}</li>`;
+  }).join('');
+  pendingImport=incoming;
+  $('impStat').innerHTML=`檔案：<b>${esc(f.name)}</b><br>共 ${chs.length} 個章節、${pages} 頁筆記：`+
+    `<ul style="margin:8px 0 0;padding-left:1.3em">${rows}</ul>`+
+    (unknown.length?'':'');
+  $('dataOv').classList.remove('show');
+  $('impOv').classList.add('show');
+}
+function applyImport(merge){
+  if(!pendingImport) return;
+  const pages=Object.values(pendingImport.chapters).reduce((a,b)=>a+Object.keys(b).length,0);
+  if(merge){ for(const [cid,b] of Object.entries(pendingImport.chapters)) Object.assign(bucket(cid),b); }
+  else S.db={v:2, chapters:JSON.parse(JSON.stringify(pendingImport.chapters))};
+  pendingImport=null;
+  save();
+  $('noteText').value=note(S.i).t||'';
+  redraw(); if($('boardOv').classList.contains('show')) drawBoard();
+  buildGrid(); buildChapterList();
+  $('impOv').classList.remove('show');
+  toast(`已${merge?'合併':'取代'}載入 ${pages} 頁筆記 ✓`);
+}
+$('importFile').addEventListener('change', e=>{ const f=e.target.files[0]; e.target.value=''; pickFile(f); });
+$('impMerge').onclick=()=>applyImport(true);
+$('impReplace').onclick=()=>{ if(confirm('確定要清掉這台裝置上現有的筆記，只留匯入的內容？')) applyImport(false); };
+$('impCancel').onclick=()=>{ pendingImport=null; $('impOv').classList.remove('show'); };
+
+/* 拖放 .json 到頁面任何地方即可載入 */
+['dragenter','dragover'].forEach(t=>window.addEventListener(t,e=>{
+  if(!e.dataTransfer||![...e.dataTransfer.types].includes('Files')) return;
+  e.preventDefault(); $('dataOv').classList.add('show'); $('drop').classList.add('over');
+}));
+window.addEventListener('dragleave',e=>{ if(e.relatedTarget===null) $('drop').classList.remove('over'); });
+window.addEventListener('drop',e=>{
+  if(!e.dataTransfer||!e.dataTransfer.files.length) return;
+  e.preventDefault(); $('drop').classList.remove('over'); pickFile(e.dataTransfer.files[0]);
+});
+
+/* ---------- 章節目錄 / 縮圖 ---------- */
+function buildChapterSelect(){
+  const s=$('chapSel'); s.innerHTML='';
+  S.chapters.forEach((c,k)=>{ const o=document.createElement('option');
+    o.value=String(k); o.textContent=`${k+1}. ${c.title}（${c.slides.length}）`; s.appendChild(o); });
+  s.style.display = S.chapters.length>1 ? '' : 'none';
+  $('bHome').style.display = S.chapters.length>1 ? '' : 'none';
+  s.onchange=()=>openChapter(+s.value,0);
+}
+function buildChapterList(){
+  const g=$('chapList'); g.innerHTML='';
+  S.chapters.forEach((c,k)=>{
+    const n=chapNoteCount(c.id);
+    const b=document.createElement('button'); b.className='chcard'+(k===S.ci?' cur':'');
+    b.innerHTML=`<img loading="lazy" src="${esc(c.slides[0].src)}" alt="">
+      <div class="cbody">
+        <h3>${esc(c.title)}</h3>
+        <div class="chmeta"><span class="badge">${c.slides.length} 頁</span>
+          ${n?`<span class="badge has">${n} 頁有筆記</span>`:''}
+          <span class="badge">?ch=${esc(c.id)}</span></div>
+        <div class="md">${md(c.intro).slice(0,1400)}</div>
+      </div>`;
+    b.onclick=()=>{ $('homeOv').classList.remove('show'); openChapter(k,0); };
+    g.appendChild(b);
+  });
+}
+function buildGrid(){
+  const g=$('gridBody'); g.innerHTML='';
+  S.slides.forEach((s,k)=>{
+    const b=document.createElement('button'); b.className='thumb'+(k===S.i?' cur':'');
+    b.innerHTML=`<img loading="lazy" src="${esc(s.src)}" alt="">
+      <div class="cap"><span>第 ${k+1} 頁</span><span class="dotwrap"></span></div>`;
+    b.onclick=()=>{ $('gridOv').classList.remove('show'); go(k); };
+    g.appendChild(b);
+  });
+  refreshThumbDots();
+}
+function refreshThumbDots(){
+  document.querySelectorAll('#gridBody .thumb').forEach((t,k)=>{
+    const w=t.querySelector('.dotwrap'); if(!w) return;
+    w.innerHTML=hasContent(k)?'<span class="dot" title="已有筆記"></span>':'';
+  });
+}
+
+/* ---------- 錯誤畫面 ---------- */
+function showErr(title, subHtml, listChapters){
+  $('loader').style.display='none';
+  $('errTitle').textContent=title;
+  $('errSub').innerHTML=subHtml;
+  const L=$('errList'); L.innerHTML='';
+  if(listChapters && S.chapters.length){
+    S.chapters.forEach((c,k)=>{
+      const b=document.createElement('button');
+      b.innerHTML=`<span>${k+1}. ${esc(c.title)}<br><small style="color:var(--dim)">?ch=${esc(c.id)}</small></span><small>${c.slides.length} 頁</small>`;
+      b.onclick=()=>{ $('err').classList.remove('show'); openChapter(k,0); };
+      L.appendChild(b);
+    });
+  }
+  $('errHome').style.display = (listChapters&&S.chapters.length)?'':'none';
+  $('err').classList.add('show');
+}
+$('errHome').onclick=()=>{ $('err').classList.remove('show'); if(!S.slides.length&&S.chapters.length) openChapter(0,0);
+  $('homeOv').classList.add('show'); };
+$('errReload').onclick=()=>location.reload();
+
+/* ---------- UI ---------- */
+function setDraw(on){
+  S.drawMode=on; $('bDraw').classList.toggle('on',on); $('tools').classList.toggle('show',on);
+  $('ink').style.pointerEvents=on?'auto':'none';
+  stage.classList.toggle('draw',on); stage.classList.toggle('pan',!on);
+}
+function setTool(t){ S.tool=t;
+  $('tPen').classList.toggle('on',t==='pen'); $('tMark').classList.toggle('on',t==='marker');
+  $('tErase').classList.toggle('on',t==='eraser'); if(!S.drawMode) setDraw(true); }
+function buildSwatches(){ const w=$('swatches');
+  COLORS.forEach(c=>{ const b=document.createElement('button'); b.className='sw'+(c===S.color?' on':'');
+    b.style.background=c; b.title=c;
+    b.onclick=()=>{ S.color=c; if(S.tool==='eraser') setTool('pen');
+      w.querySelectorAll('.sw').forEach(x=>x.classList.remove('on')); b.classList.add('on'); };
+    w.appendChild(b); }); }
+function toggleFull(){ const d=document.documentElement;
+  if(!document.fullscreenElement) (d.requestFullscreen||d.webkitRequestFullscreen||(()=>{})).call(d);
+  else (document.exitFullscreen||document.webkitExitFullscreen||(()=>{})).call(document); }
+function openOv(id){ document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show')); $(id).classList.add('show'); }
+function showInfo(){
+  $('infoTitle').textContent=chap().title;
+  $('infoBody').innerHTML = md(chap().intro) ||
+    '<p style="color:var(--dim)">這個章節還沒有簡介。<br>在章節資料夾裡放一個 <code>chapter.md</code>（第一行 <code># 章節標題</code>，之後寫簡介）再重新產生 <code>chapters.json</code> 就會顯示在這裡。</p>';
+  openOv('infoOv');
+}
+
+$('bPrev').onclick=prev; $('bNext').onclick=next;
+$('edgeL').onclick=prev; $('edgeR').onclick=next;
+$('bZoomIn').onclick=()=>zoomAt(1.25); $('bZoomOut').onclick=()=>zoomAt(1/1.25); $('bZoomReset').onclick=resetZoom;
+$('bFull').onclick=toggleFull;
+$('bDraw').onclick=()=>setDraw(!S.drawMode);
+$('tPen').onclick=()=>setTool('pen'); $('tMark').onclick=()=>setTool('marker'); $('tErase').onclick=()=>setTool('eraser');
+$('sizeRange').oninput=e=>S.size=+e.target.value;
+$('tUndo').onclick=()=>{ note(S.i).ink.pop(); redraw(); save(); };
+$('tClear').onclick=()=>{ if(confirm('清除這一頁的所有手繪標註？')){ note(S.i).ink=[]; redraw(); save(); refreshThumbDots(); } };
+$('tPng').onclick=exportSlidePng;
+
+$('bHome').onclick=()=>{ buildChapterList(); openOv('homeOv'); };
+$('homeClose').onclick=()=>$('homeOv').classList.remove('show');
+$('bInfo').onclick=showInfo;
+$('infoClose').onclick=()=>$('infoOv').classList.remove('show');
+$('bGrid').onclick=()=>openOv('gridOv');
+$('gridClose').onclick=()=>$('gridOv').classList.remove('show');
+$('bBoard').onclick=()=>{ openOv('boardOv'); requestAnimationFrame(boardSize); };
+$('boardClose').onclick=()=>$('boardOv').classList.remove('show');
+$('bHelp').onclick=()=>openOv('helpOv');
+$('helpClose').onclick=()=>$('helpOv').classList.remove('show');
+
+$('bNote').onclick=()=>$('notePanel').classList.toggle('show');
+$('noteClose').onclick=()=>$('notePanel').classList.remove('show');
+$('noteText').addEventListener('input',e=>{
+  note(S.i).t=e.target.value; $('noteStat').textContent='輸入中⋯'; saveSoon();
+  clearTimeout(window._ns); window._ns=setTimeout(()=>{ $('noteStat').textContent='已儲存 ✓'; refreshThumbDots(); },600);
+});
+$('noteText').addEventListener('keydown',e=>{ if((e.metaKey||e.ctrlKey)&&e.key==='Enter') $('notePanel').classList.remove('show'); });
+
+$('pageInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ const v=parseInt(e.target.value,10);
+    if(v>=1&&v<=S.slides.length) go(v-1); else { toast('本章只有 '+S.slides.length+' 頁'); e.target.value=S.i+1; }
+    e.target.blur(); } });
+$('pageInput').addEventListener('blur',e=>{ e.target.value=S.i+1; });
+
+function openData(){
+  prune();
+  let pages=0, chs=0;
+  for(const b of Object.values(S.db.chapters)){ const n=Object.keys(b).length; if(n){ chs++; pages+=n; } }
+  $('dataStat').innerHTML = pages
+    ? `這台裝置目前存有 <b>${chs}</b> 個章節、<b>${pages}</b> 頁筆記。`
+    : '這台裝置目前還沒有任何筆記。';
+  $('dataOv').classList.add('show');
+}
+$('bData').onclick=openData;
+$('dataClose').onclick=()=>$('dataOv').classList.remove('show');
+$('dExport').onclick=()=>{ exportJson(); $('dataOv').classList.remove('show'); };
+$('dImport').onclick=()=>$('importFile').click();
+$('bShare').onclick=()=>{
+  const url=location.href;
+  const fb='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url);
+  if(navigator.share) navigator.share({title:document.title,url}).catch(()=>window.open(fb,'_blank','noopener'));
+  else window.open(fb,'_blank','noopener,width=640,height=640');
+};
+
+/* ---------- 鍵盤 ---------- */
+document.addEventListener('keydown',e=>{
+  const tag=(e.target.tagName||'').toLowerCase();
+  if(tag==='input'||tag==='textarea'||tag==='select') return;
+  const k=e.key;
+  if((e.ctrlKey||e.metaKey)&&k.toLowerCase()==='z'){ e.preventDefault();
+    if($('boardOv').classList.contains('show')){ note(S.i).bd.pop(); drawBoard(); }
+    else { note(S.i).ink.pop(); redraw(); } save(); return; }
+  if(e.ctrlKey||e.metaKey||e.altKey) return;
+  switch(k){
+    case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); next(); return;
+    case 'ArrowLeft': case 'PageUp': e.preventDefault(); prev(); return;
+    case 'Home': go(0); return;
+    case 'End': go(S.slides.length-1); return;
+    case '+': case '=': zoomAt(1.25); return;
+    case '-': case '_': zoomAt(1/1.25); return;
+    case '0': resetZoom(); return;
+    case '[': if(S.ci>0) openChapter(S.ci-1,0); return;
+    case ']': if(S.ci<S.chapters.length-1) openChapter(S.ci+1,0); return;
+    case 'Escape':
+      if(document.querySelector('.overlay.show')) document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));
+      else if($('notePanel').classList.contains('show')) $('notePanel').classList.remove('show');
+      else if(S.drawMode) setDraw(false);
+      return;
+  }
+  switch(k.toLowerCase()){
+    case 'f': toggleFull(); break;
+    case 'c': $('homeOv').classList.contains('show') ? $('homeOv').classList.remove('show') : $('bHome').click(); break;
+    case 'i': $('infoOv').classList.contains('show') ? $('infoOv').classList.remove('show') : showInfo(); break;
+    case 'g': $('gridOv').classList.contains('show') ? $('gridOv').classList.remove('show') : openOv('gridOv'); break;
+    case 'n': $('bNote').click(); break;
+    case 'b': $('boardOv').classList.contains('show') ? $('boardOv').classList.remove('show') : $('bBoard').click(); break;
+    case 'd': setDraw(!S.drawMode); break;
+    case 'p': setTool('pen'); break;
+    case 'm': setTool('marker'); break;
+    case 'e': setTool('eraser'); break;
+    case '?': openOv('helpOv'); break;
+  }
+});
+
+let rz; window.addEventListener('resize',()=>{ clearTimeout(rz); rz=setTimeout(()=>{
+  layout(); if($('boardOv').classList.contains('show')) boardSize(); },120); });
+window.addEventListener('beforeunload',save);
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) save(); });
+
+/* ---------- 啟動 ---------- */
+(async function init(){
+  buildSwatches(); setTool('pen'); setDraw(false);
+  setProgress(8,'載入章節資料⋯');
+
+  S.chapters = await loadChapters();
+  loadDB();
+
+  if(!S.chapters.length){
+    showErr('找不到投影片',
+      '請把投影片 PNG 放進 <code>slides/</code>（單一章節），或依章節分資料夾放在 '+
+      '<code>slides/ch01-xxx/</code>、<code>slides/ch02-xxx/</code>⋯<br><br>'+
+      '然後在網站資料夾執行：<br><code>python3 make_slides_json.py</code><br><br>'+
+      '若不跑腳本，也可以把檔案命名為 <code>slides/slide-001.png</code> 讓網站自動偵測。', false);
+    return;
+  }
+  setProgress(35,'建立章節目錄⋯');
+  buildChapterSelect(); buildChapterList();
+
+  // 網址參數
+  const q=new URLSearchParams(location.search);
+  const wantCh=q.get('ch');
+  const wantP=parseInt(q.get('p')||(location.hash||'').replace('#',''),10);
+  let idx=0, bad=false;
+  if(wantCh){
+    idx=S.chapters.findIndex(c=>c.id===wantCh || c.id.toLowerCase()===wantCh.toLowerCase());
+    if(idx<0){ idx=0; bad=true; }
+  }
+  const page=(Number.isFinite(wantP)&&wantP>=1)? wantP-1 : 0;
+
+  // 先把第一張圖載好，進度條才有意義
+  setProgress(55,'載入投影片⋯');
+  await new Promise(res=>{ const im=new Image();
+    im.onload=im.onerror=res; im.src=S.chapters[idx].slides[Math.min(page,S.chapters[idx].slides.length-1)].src; });
+  setProgress(92,'準備畫面⋯');
+
+  openChapter(idx,page);
+  setProgress(100,'完成');
+  setTimeout(()=>{ $('loader').style.display='none'; },180);
+
+  if(bad){
+    showErr('無此章節',
+      `網址中的 <code>?ch=${esc(wantCh)}</code> 找不到對應的章節。<br>`+
+      '可能是章節資料夾改名、尚未重新產生 <code>chapters.json</code>，或連結拼錯了。<br>'+
+      '以下是目前可用的章節，點一下即可前往：', true);
+  } else if(!wantCh && S.chapters.length>1){
+    $('homeOv').classList.add('show');   // 沒指定章節 → 先顯示目錄
+  }
+})();
+</script>
+</body>
+</html>
