@@ -1,0 +1,10 @@
+character_id,name,rarity,base_hp,base_attack,base_defense,base_speed,growth_hp,growth_attack,growth_defense,growth_speed,unique_skill_id,avatar_id
+CHR_001,曜光守衛,Gold,1600,170,110,96,430,24,13,0.3,SKL_001,CHR_001
+CHR_002,星潮醫師,Gold,1300,155,85,102,370,21,10,0.4,SKL_002,CHR_002
+CHR_003,霆刃遊俠,Gold,1150,205,75,110,340,29,9,0.5,SKL_003,CHR_003
+CHR_004,暮岩戰士,Purple,1450,145,100,94,350,19,12,0.2,SKL_004,CHR_004
+CHR_005,晨羽祭司,Purple,1200,140,80,103,310,18,9,0.3,SKL_005,CHR_005
+CHR_006,流火射手,Purple,1050,185,70,108,290,25,8,0.4,SKL_006,CHR_006
+CHR_007,岩盾學徒,Blue,1250,125,90,95,260,15,10,0.2,SKL_007,CHR_007
+CHR_008,風鈴醫者,Blue,1000,120,65,104,230,14,7,0.3,SKL_008,CHR_008
+CHR_009,燧火斥候,Blue,900,160,60,107,220,20,7,0.4,SKL_009,CHR_009
