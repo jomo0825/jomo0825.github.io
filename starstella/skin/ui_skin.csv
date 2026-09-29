@@ -1,0 +1,71 @@
+key,usage,width,height,border,fallback,fill,fill2,stroke,stroke_width,radius,note
+bg_main,全畫面背景（深色星空）,1080,1920,,gradient,#2A2670,#0A0922,,,,不做九宮格；深靛星空，中央要安靜
+panel,一般卡片／列表項底板,382,360,72 72 72 72,round,#1A174ADB,,#4C54B8,2,8,深色玻璃卡片；九宮格
+panel_selected,選取中的卡片,363,360,72 72 72 72,round,#3C1446E0,,#FF5CAD,3,8,選取中；桃紅霓虹框
+panel_warning,錯誤／衝突提示框,749,180,59 59 59 59,round,#501032E0,,#FF5A8A,3,8,警示；紅色霓虹框
+panel_success,可投入／成功提示框,1117,180,59 59 59 59,round,#0A3C32E0,,#3FE0A0,3,8,成功；綠色霓虹框
+panel_dark,戰報等深色區塊,192,192,48,round,#FFFFFFB8,,#C9C3F0,2,10,九宮格
+modal_panel,置中彈窗,815,480,86 86 86 86,round,#181544F7,,#7B83F0,3,10,置中彈窗；深色
+sheet_panel,底部抽屜彈窗,1587,480,72 72 72 72,round,#14123AFA,,#3FD1F2,3,12,底部抽屜；上緣青色線
+overlay,彈窗後方遮罩,16,16,,round,#05041AB8,,,,0,純色即可
+header_bar,頁首底板,2032,192,115 86 115 86,round,#2A2466,,,,0,可選；預設透明
+btn_primary,主要按鈕（金）,1162,186,140 84 140 84,pill,#FF5CAD,#E0107A,,,,九宮格；膠囊形，左右邊界 = 高度一半
+btn_secondary,次要按鈕,762,186,140 84 140 84,pill,#FFFFFF,,#8C84D8,3,,九宮格；膠囊形
+btn_danger,危險操作按鈕（紅）,744,186,140 84 140 84,pill,#FF8A95,#E0485A,,,,九宮格；膠囊形
+btn_disabled,停用按鈕,1058,186,140 84 140 84,pill,#D7D8E4,,#B9BACB,3,,九宮格；膠囊形
+chip,外框標籤（程式會依用途染色）,341,60,36 27 36 27,pill,#FFFFFF0A,,#FFFFFFFF,2,,九宮格；請用白色／灰階繪製以便染色
+chip_solid,實心標籤（程式會依用途染色）,120,48,24 24 24 24,pill,#FFFFFFFF,,,,,九宮格；請用白色繪製以便染色
+tab_bar,底部導覽列底板,1154,198,139 89 139 89,round,#221D57F2,,,,0,不做九宮格；橫向拉伸
+tab_indicator,導覽列目前頁指示條,132,9,,pill,#F5C451,,,,,
+tab_icon_gacha,導覽列圖示：抽卡,128,128,,diamond,#FFFFFF,,,,,白色圖示；程式依選取狀態染金／灰
+tab_icon_character,導覽列圖示：角色,128,128,,round,#FFFFFF,,,,8,白色圖示
+tab_icon_team,導覽列圖示：編隊,128,128,,circle,#FFFFFF,,,,,白色圖示
+tab_icon_battle,導覽列圖示：戰鬥,128,128,,diamond,#FFFFFF,,,,,白色圖示
+currency_pill,貨幣顯示底板,414,90,81 41 81 41,pill,#231E5C,,#3FD1F2,2,,九宮格
+icon_currency,貨幣圖示,96,96,,diamond,#F5C451,,,,,
+avatar_mask,頭像裁切形狀,256,256,48,round,#FFFFFF,,,,12,白色不透明區域 = 頭像顯示範圍
+avatar_bg,頭像底色,256,256,48,round,#3A3F7A,,,,12,
+frame_gold,頭像外框：金,366,360,72 72 72 72,round,#00000000,,#F5C451,4,12,九宮格；中間必須透明
+frame_purple,頭像外框：紫,362,360,72 72 72 72,round,#00000000,,#B58CFF,4,12,九宮格；中間必須透明
+frame_blue,頭像外框：藍,365,360,72 72 72 72,round,#00000000,,#62B0FF,4,12,九宮格；中間必須透明
+frame_empty,空位置外框,256,256,48,round,#FFFFFF0D,,#6E73AA,3,12,九宮格
+bar_bg,進度條底,64,24,12 12 12 12,pill,#FFFFFF22,,,,,九宮格
+bar_hp,生命條（高）,64,24,12 12 12 12,pill,#52D69A,,,,,九宮格
+bar_hp_mid,生命條（中）,64,24,12 12 12 12,pill,#FFA94D,,,,,九宮格
+bar_hp_low,生命條（低）,64,24,12 12 12 12,pill,#FF6B7A,,,,,九宮格
+bar_xp,經驗條,64,24,12 12 12 12,pill,#F5C451,,,,,九宮格
+bar_skill,技能進度格（已投入）,64,24,12 12 12 12,pill,#62B0FF,,,,,九宮格
+bar_skill_next,技能進度格（本次將投入）,64,24,12 12 12 12,pill,#52D69A66,,#52D69A,2,,九宮格
+red_dot_on,紅點（已取得）,48,48,,circle,#FF4D5E,,,,,
+red_dot_off,紅點（未取得）,48,48,,circle,#00000000,,#6E73AA,4,,
+skill_frame,技能圖示外框（程式依類型染色）,173,168,42 42 42 42,round,#FFFFFFCC,,#FFFFFF,3,12,九宮格；請用白色外框以便染色
+gacha_banner,卡池橫幅底圖,984,684,,round,#5B3FB8,#1A1F52,#FFFFFF26,2,20,可做成完整插畫；九宮格邊界可設 0 改為不拉伸
+gacha_glow,抽卡光暈,512,512,,glow,#FFD86BAA,,,,,
+result_glow,結果光暈,512,512,,glow,#FFD86BCC,,,,,
+action_banner,戰鬥行動橫幅,192,192,48,round,#241C5CE6,,#F5B84A,2,10,九宮格
+damage_badge,傷害數字標籤,120,60,30 30 30 30,pill,#FF6B7A,,,,,九宮格
+heal_badge,治療數字標籤,120,60,30 30 30 30,pill,#52D69A,,,,,九宮格
+rate_tile,機率方塊底,218,150,30 30 30 30,round,#1A174ADB,,#4C54B8,2,6,九宮格；上方色帶由程式另外疊上
+tile_band,機率方塊上方色帶（程式依稀有度染色）,168,60,18,round,#FFFFFF,,,,6,九宮格；請用白色繪製以便染色
+result_bg,抽卡結果彈窗背景（深色星空）,1020,1800,,round,#2A2466,#15123A,#B7AEEA,3,14,不做九宮格；整張拉伸到彈窗大小，需夠暗以放白字
+battle_bg,戰鬥場景背景,1080,1920,,gradient,#3B2A80,#0C0A26,,,,不做九宮格；深色戰場，敵上我下中間留舞台
+unit_card_player,我方角色格底框,307,400,40 40 40 40,round,#10204ACC,,#3FD1F2,2,6,九宮格；青色霓虹
+unit_card_enemy,敵方角色格底框,295,400,40 40 40 40,round,#3A1030CC,,#FF5A8A,2,6,九宮格；紅色霓虹
+round_badge,回合標籤底板,651,110,50 50 50 50,round,#231E5C,,#FF3EA5,3,10,九宮格；切角斜板
+log_drawer,戰報抽屜底,579,450,59 59 59 59,round,#0E0C2CF2,,#3FD1F2,3,4,九宮格；上緣青色線
+result_emblem,勝負標誌底飾（金色翼徽）,420,420,,none,,,,,,可選；放在勝利／失敗／平局大字後方
+fx_sparkle,星光粒子與點擊光點,64,64,,glow,#FFFFFFFF,,,,,白色柔光點；程式染色與縮放
+icon_ticket,單抽票券圖示,96,96,,none,,,,,,可選；放在單抽按鈕文字左側
+icon_arrow_left,輪播左箭頭,64,96,,none,,,,,,白色；可選（預設用文字〈）
+icon_arrow_right,輪播右箭頭,64,96,,none,,,,,,白色；可選（預設用文字〉）
+dot_on,輪播圓點（目前）,24,24,,circle,#FF3EA5,,,,,
+dot_off,輪播圓點（其他）,24,24,,circle,#FFFFFF44,,,,,
+badge_new,「新獲得」角標底,256,60,30 27 30 27,pill,#FF3EA5,,,,,九宮格；文字由程式疊上
+icon_lock,鎖定圖示,64,64,,none,,,,,,白色；可選
+icon_warning,警示圖示,64,64,,none,,,,,,可選
+icon_close,關閉圖示,64,64,,none,,,,,,白色；可選（預設用文字✕）
+stat_icon_hp,素質圖示：生命,64,64,,none,,,,,,可選；角色詳情素質列
+stat_icon_atk,素質圖示：攻擊,64,64,,none,,,,,,可選
+stat_icon_def,素質圖示：防禦,64,64,,none,,,,,,可選
+stat_icon_spd,素質圖示：速度,64,64,,none,,,,,,可選
+splash_bg,啟動畫面背景,1080,1920,,none,,,,,,可選；未提供時用卡池橫幅
