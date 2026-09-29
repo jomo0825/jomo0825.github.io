@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-27",
+  "generated": [
+    {
+      "file": "summon-hero-v1.png",
+      "reference": "../../../wireframes/rinne-slide/gacha.png",
+      "prompt": "Create a premium original game illustration asset, not a UI screenshot. Use reference ONLY for refined anime art and crystalline cosmic fantasy aesthetic. Asset: landscape 3:2 summon banner illustration for Starfall Squad. Beautiful adult female star-tide healer, long flowing silver lavender hair, luminous cyan eyes, intricately crafted black navy silver armored coat with blue gemstones and elegant gold filigree, shoulder cape, crystalline healing staff. Medium waist-up composition on RIGHT two thirds, face fully inside image, dynamic windblown hair, nebula portal behind, small floating shards. LEFT third predominantly deep navy violet negative space, soft azure nebula so live UI title can be overlaid. Outstanding high-detail commercial anime RPG key visual, elegant anatomy, cinematic cyan violet rim light, rich deep black/navy contrast, selective magenta accents, not oversaturated. No text, no labels, no border, no buttons, no watermark. Wide landscape image; do not draw a phone or interface. Save the generated output.",
+      "sha256": "67291439f10bbeed3bde47146490ef9ababf31e4d1f65458494e511c501555fd"
+    },
+    {
+      "file": "summon-background-v1.png",
+      "prompt": "Use case stylized-concept. Asset type: portrait background illustration ONLY for a polished cosmic anime RPG game, no interface. A monumental summoning observatory floating above a deep blue star ocean, ornate crystalline concentric portal ring centered in upper middle, violet starfield, elegant thin gold architecture and teal blue luminous circuit filigree at the edges. Dark navy purple mysterious atmosphere, cinematic subtle nebula mist and restrained magenta highlights, refined highly detailed fantasy key art. Central lower portion is mostly dark calm negative space for overlays, do not fill every inch with stars. Portrait 2:3 composition. No characters, no text, no cards, no UI, no buttons, no border, no watermark. This is a standalone game background to support real animated particle emitters and real portal rings added by a game engine.",
+      "sha256": "c9e18bdf8a5643779270cbfe4836ef5a4f5a0baa99fd81180244a54aa5057231"
+    }
+  ],
+  "retained": {
+    "avatars": "Nine existing original avatars copied from Unity Resources/Avatars; not regenerated this turn"
+  },
+  "procedural": [
+    "Phaser glow64x64",
+    "four-point spark24x24",
+    "crystal shard14x30",
+    "CSS game panels and cut-corner buttons"
+  ]
+}

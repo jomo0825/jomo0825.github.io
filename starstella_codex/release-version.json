@@ -1,0 +1,22 @@
+{
+  "platform": "HTML",
+  "projectVersion": "0.1.2",
+  "gddVersion": "1.3.1",
+  "gameplayBaseline": "1.3",
+  "engine": "Phaser 3.90.0",
+  "saveFormat": "browser JSON snapshot",
+  "saveSchemaVersion": 1,
+  "unityReferenceVersion": "1.2.3",
+  "coreTests": "9 passed",
+  "browserQA": "passed",
+  "extendedGameplayQA": "passed",
+  "visualAcceptance": "quality prototype; Rinne parity and physical mobile pending",
+  "updatedDate": "2026-09-27",
+  "productionBuild": "passed",
+  "productionBrowserQA": "passed",
+  "sourceFingerprint": "7a01dc4ff42515f6c04148e8a76b4120146dd46f0e4c0047b06f386481223f84",
+  "acceptanceReport": "qa/browser-results.json",
+  "extendedAcceptanceReport": "qa/extended-results.json",
+  "battleActionQA": "passed: desktop, 360x640, 540x960; pointer hit and actual click",
+  "githubPagesQA": "passed: project subpath /starfall/, fonts, images, battle, no HTTP errors"
+}

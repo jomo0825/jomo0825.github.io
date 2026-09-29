@@ -1,0 +1,16 @@
+[
+  {
+    "file": "notosanstc-variable.ttf",
+    "family": "Noto Sans TC",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanstc/NotoSansTC%5Bwght%5D.ttf",
+    "license": "SIL Open Font License 1.1",
+    "content": "Public full font, no project text transmitted"
+  },
+  {
+    "file": "notoseriftc-variable.ttf",
+    "family": "Noto Serif TC",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notoseriftc/NotoSerifTC%5Bwght%5D.ttf",
+    "license": "SIL Open Font License 1.1",
+    "content": "Public full font, no project text transmitted"
+  }
+]
