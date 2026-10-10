@@ -1,0 +1,65 @@
+[
+  {
+    "file": "Rinne_Recruitment_HTML_v1.2.2/review.html",
+    "samples": [
+      {
+        "target": "#CP07-one",
+        "brightenedPixels": 4923,
+        "meanIncrease": 17.617654482457915
+      },
+      {
+        "target": "#CP07-ten",
+        "brightenedPixels": 4731,
+        "meanIncrease": 11.339035527341547
+      },
+      {
+        "target": "#CP05",
+        "brightenedPixels": 11592,
+        "meanIncrease": 14.753842678275126
+      }
+    ],
+    "noConsoleErrors": true
+  },
+  {
+    "file": "Rinne_Recruitment_HTML_v1.2.2/index.html",
+    "samples": [
+      {
+        "target": "#CP07-one",
+        "brightenedPixels": 4557,
+        "meanIncrease": 17.737053571428568
+      },
+      {
+        "target": "#CP07-ten",
+        "brightenedPixels": 4387,
+        "meanIncrease": 11.373520923520928
+      },
+      {
+        "target": "#CP05",
+        "brightenedPixels": 10851,
+        "meanIncrease": 14.678538433111642
+      }
+    ],
+    "noConsoleErrors": true
+  },
+  {
+    "file": "deliverables/Rinne_Recruitment_Preview_v1.2.2.html",
+    "samples": [
+      {
+        "target": "#CP07-one",
+        "brightenedPixels": 4923,
+        "meanIncrease": 17.617608590899668
+      },
+      {
+        "target": "#CP07-ten",
+        "brightenedPixels": 4730,
+        "meanIncrease": 11.339080075732236
+      },
+      {
+        "target": "#CP05",
+        "brightenedPixels": 11592,
+        "meanIncrease": 14.753946945407518
+      }
+    ],
+    "noConsoleErrors": true
+  }
+]

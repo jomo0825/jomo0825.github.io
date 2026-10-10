@@ -1,0 +1,112 @@
+[
+  {
+    "file": "assets/background-only.png",
+    "sizeBytes": 3257330,
+    "sha256": "c7239d5f40172f26506377acd802e80066693326c4a3db30f805c0db8ae04221"
+  },
+  {
+    "file": "assets/card1.png",
+    "sizeBytes": 85952,
+    "sha256": "14020336403938c7ed8bc3bc8c0951a868e5b549ccdebb2bfed915df51fbfe6d"
+  },
+  {
+    "file": "assets/card2.png",
+    "sizeBytes": 73073,
+    "sha256": "0892d580c7db1b5b2d5593b3ca3d8fb0df1772539c7c1d959494c3e07346f6bb"
+  },
+  {
+    "file": "assets/card3.png",
+    "sizeBytes": 79104,
+    "sha256": "7ad15a5790f8bf5fc88f51960945000d9911179f22ef4db2d4b77a1383dc1027"
+  },
+  {
+    "file": "assets/gem.png",
+    "sizeBytes": 5603,
+    "sha256": "a3c9fafbf3e7532ec4a2c43a044afd83b72ac86c98c0078fd75a04db1a69ddf9"
+  },
+  {
+    "file": "assets/header-title.png",
+    "sizeBytes": 44554,
+    "sha256": "e34c1af8b2af752bb5bfcf072954278bd2ccd083c7f126f1644cfad2b9d870d2"
+  },
+  {
+    "file": "assets/neon-cube.png",
+    "sizeBytes": 367773,
+    "sha256": "dc062c0297b68a44ccaeec81c8e832fc7746b96d0934b623832765c867d1722a"
+  },
+  {
+    "file": "assets/neon-data.png",
+    "sizeBytes": 440849,
+    "sha256": "87df5e385c1becddbde8d6606d2a93ef765156c1c35ce89d60b8914b54518e2c"
+  },
+  {
+    "file": "assets/neon-mesh.png",
+    "sizeBytes": 547760,
+    "sha256": "0f463a1044e72a831b491b42c526e86dc6fe23759f0a97b08b4211edb95c5506"
+  },
+  {
+    "file": "assets/neon-network.png",
+    "sizeBytes": 522844,
+    "sha256": "b1d3421e7cd7e9b2d24d8c7fc52d1fc4e77c446c18249a12e16296871d534ed0"
+  },
+  {
+    "file": "assets/neon-orbit.png",
+    "sizeBytes": 396618,
+    "sha256": "5fab50c8e4488a4a1bd63a402c5168ffbfc8fce303af04efb8b1111e1cc45613"
+  },
+  {
+    "file": "assets/neon-scan.png",
+    "sizeBytes": 561771,
+    "sha256": "dfced833eb246ec8b603dd2dc8e001198d2576423751148a0c15035f94036f96"
+  },
+  {
+    "file": "assets/neon-spectrum.png",
+    "sizeBytes": 524692,
+    "sha256": "5e95dfbcba586fc3e313da589b2e4144008e1aac91bd8ebbc55aebcaa53e8241"
+  },
+  {
+    "file": "assets/one-raster.png",
+    "sizeBytes": 84566,
+    "sha256": "da939e8967af8a5cdee6a31eec6501e558a50d4d88979577da7ae70c2e752a51"
+  },
+  {
+    "file": "assets/pity-raster.png",
+    "sizeBytes": 105263,
+    "sha256": "a705985e1bf2082eb4feb9e8d191c82e97c595461028643f1decca51780d55fc"
+  },
+  {
+    "file": "assets/project-font.otf",
+    "sizeBytes": 239520,
+    "sha256": "08318f6d768a517599c72a61d3ace080f54f516226d0b0c52b75c0c4b67adca9"
+  },
+  {
+    "file": "assets/promo-final.png",
+    "sizeBytes": 1786652,
+    "sha256": "d84b7806524c89df904d2b0b1a31d226f031ed33d243d070bd0c94d1c196a591"
+  },
+  {
+    "file": "assets/rinne-character.png",
+    "sizeBytes": 1408938,
+    "sha256": "d0cfb854b45e65b8e7943a173faadfadeedec2a73f113de7fb62e461c01dcb52"
+  },
+  {
+    "file": "assets/source.png",
+    "sizeBytes": 3467050,
+    "sha256": "a3938572d01da84ca7c00d95f01b864b7d22929bdb4997af8fa38450bd00515b"
+  },
+  {
+    "file": "assets/tabs-raster.png",
+    "sizeBytes": 111322,
+    "sha256": "ea09eaa5128b02c2d0cf656627030eb548094fd40f977bee810935ecf8eae66e"
+  },
+  {
+    "file": "assets/ten-raster.png",
+    "sizeBytes": 87076,
+    "sha256": "fdc33b993be56e524f8082ab09b15c1e435487707a02a48887b54abd659ccc9a"
+  },
+  {
+    "file": "assets/ticket.png",
+    "sizeBytes": 9324,
+    "sha256": "2706b871e41eacdcd4ccabaddafb3d9175123daad967026c58338b2250d2b181"
+  }
+]

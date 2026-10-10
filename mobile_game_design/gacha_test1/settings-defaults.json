@@ -1,0 +1,161 @@
+{
+  "schema": "game-ui-project-settings/1",
+  "project": "rinne-recruitment-941x1672",
+  "signature": "4ba473d4019aba967fadd26ed104c9853ae94ded4682df5b96dc253dd2c93702",
+  "sourceVersion": "source-941x1672-v1",
+  "editorVersion": "v1.2.2",
+  "coordinateSystem": "component-local-reference-pixels",
+  "updatedAt": "2026-10-10T19:35:45.667Z",
+  "fields": {
+    "gems": {
+      "componentId": "CP01",
+      "fieldId": "gems",
+      "containerId": "CP01-gems",
+      "referenceWidth": 161,
+      "referenceHeight": 52,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": 25,
+      "y": 0,
+      "width": 100,
+      "height": 49,
+      "fontSize": 27,
+      "lineHeight": 31.049999999999997,
+      "letterSpacing": 0
+    },
+    "tickets": {
+      "componentId": "CP01",
+      "fieldId": "tickets",
+      "containerId": "CP01-tickets",
+      "referenceWidth": 140,
+      "referenceHeight": 52,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": 24,
+      "y": 0,
+      "width": 88,
+      "height": 49,
+      "fontSize": 27,
+      "lineHeight": 31.049999999999997,
+      "letterSpacing": 0
+    },
+    "detail-label": {
+      "componentId": "CP04",
+      "fieldId": "detail-label",
+      "containerId": "CP04",
+      "referenceWidth": 97,
+      "referenceHeight": 230,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": -5,
+      "y": 80,
+      "width": 102,
+      "height": 37,
+      "fontSize": 22,
+      "lineHeight": 25.299999999999997,
+      "letterSpacing": 0
+    },
+    "probability-label": {
+      "componentId": "CP04",
+      "fieldId": "probability-label",
+      "containerId": "CP04",
+      "referenceWidth": 97,
+      "referenceHeight": 230,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": -5,
+      "y": 202,
+      "width": 102,
+      "height": 37,
+      "fontSize": 22,
+      "lineHeight": 25.299999999999997,
+      "letterSpacing": 0
+    },
+    "pity-number": {
+      "componentId": "CP06",
+      "fieldId": "pity-number",
+      "containerId": "CP06",
+      "referenceWidth": 624,
+      "referenceHeight": 94,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": 157,
+      "y": 4,
+      "width": 53,
+      "height": 49,
+      "fontSize": 38,
+      "lineHeight": 43.699999999999996,
+      "letterSpacing": 0
+    },
+    "time-label": {
+      "componentId": "CP08",
+      "fieldId": "time-label",
+      "containerId": "CP08",
+      "referenceWidth": 330,
+      "referenceHeight": 44,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": 43,
+      "y": 0,
+      "width": 92,
+      "height": 42,
+      "fontSize": 21,
+      "lineHeight": 24.15,
+      "letterSpacing": 0
+    },
+    "time-value": {
+      "componentId": "CP08",
+      "fieldId": "time-value",
+      "containerId": "CP08",
+      "referenceWidth": 330,
+      "referenceHeight": 44,
+      "fontFamily": "ProjectFont",
+      "fontWeight": 700,
+      "x": 139,
+      "y": 0,
+      "width": 182,
+      "height": 42,
+      "fontSize": 23,
+      "lineHeight": 26.45,
+      "letterSpacing": 0
+    }
+  },
+  "parameters": {
+    "rinne": {
+      "startX": 75,
+      "fadeInSeconds": 0.85
+    },
+    "cards": {
+      "visible": true,
+      "drift": true,
+      "glow": true,
+      "paused": false,
+      "speed": 1,
+      "amplitude": 1,
+      "strength": 1
+    },
+    "lighting": {
+      "sheen": true,
+      "rim": true,
+      "period": 3.2
+    },
+    "ui": {
+      "motionEnabled": true,
+      "overlayPercent": 0,
+      "calibrationEnabled": false,
+      "panelHidden": false,
+      "balance": 12680,
+      "selectedActivity": 0,
+      "activeField": "gems"
+    },
+    "portrait": {
+      "enabled": true,
+      "paused": false,
+      "amplitude": 100,
+      "speed": 1,
+      "gestureSpeed": 1.5,
+      "track": true,
+      "autoTalk": false
+    }
+  }
+}
