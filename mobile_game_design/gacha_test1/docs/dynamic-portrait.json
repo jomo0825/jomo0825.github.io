@@ -1,0 +1,22 @@
+{
+  "version": "v1.2",
+  "source": "rinne-layered-motion (6).zip / rig v8",
+  "canvas": "Logical 941×1672; adaptive backing buffer width <=720",
+  "assets": [
+    "assets/rig/blink.png",
+    "assets/rig/forearm.png",
+    "assets/rig/hairL.png",
+    "assets/rig/hairR.png",
+    "assets/rig/hand.png",
+    "assets/rig/head.png",
+    "assets/rig/lowerBody.png",
+    "assets/rig/mouth.png",
+    "assets/rig/torso.png",
+    "assets/rig/upperArm.png"
+  ],
+  "outline": "Same rendered alpha copied each frame to filtered rim canvas",
+  "runtime": "js/rinne-rig.js",
+  "controls": "parameters.portrait",
+  "order": "arm and hand before head, eyes, mouth and hair",
+  "cropManifest": "rig-crop-manifest.json"
+}

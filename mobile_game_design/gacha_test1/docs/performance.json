@@ -1,0 +1,19 @@
+{
+  "scope": "native Canvas CPU benchmark; excludes browser SVG filter, CSS composition, GPU and real device fps",
+  "displayCSSWidth": 470.5,
+  "devicePixelRatio": 1,
+  "samples": 100,
+  "v1.1": {
+    "meanMs": 62.8857,
+    "p95Ms": 72.0109,
+    "pixels": 1573352
+  },
+  "v1.2": {
+    "meanMs": 4.059,
+    "p95Ms": 4.7815,
+    "pixels": 394227
+  },
+  "clockRegression": "A 1000ms active-frame gap advances animation by 1000ms at speed1; pause/resume excludes inactive time",
+  "orderRegression": "hand paint call precedes head paint call",
+  "browserStatus": "not verified; Chromium runtime unavailable"
+}

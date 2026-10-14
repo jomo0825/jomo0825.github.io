@@ -1,0 +1,9 @@
+[
+ {"id":"AS12","file":"neon-cube.png","name":"粉紫立方體","x":6,"y":218,"w":238,"h":267,"amp":15,"period":5.9,"phase":0.35,"rotation":-3,"depth":0.94},
+ {"id":"AS13","file":"neon-orbit.png","name":"粉紫軌道環","x":-32,"y":875,"w":255,"h":319,"amp":21,"period":7.3,"phase":2.1,"rotation":5,"depth":0.84},
+ {"id":"AS14","file":"neon-data.png","name":"青藍資料卡","x":718,"y":428,"w":220,"h":330,"amp":18,"period":6.7,"phase":4.2,"rotation":3,"depth":0.88},
+ {"id":"AS15","file":"neon-mesh.png","name":"粉紫三角網格","x":-25,"y":470,"w":214,"h":321,"amp":14,"period":8.1,"phase":1.3,"rotation":-8,"depth":0.72},
+ {"id":"AS16","file":"neon-spectrum.png","name":"青藍波形頻譜","x":730,"y":829,"w":218,"h":327,"amp":23,"period":7.9,"phase":5.5,"rotation":5,"depth":0.85},
+ {"id":"AS17","file":"neon-network.png","name":"粉紫節點網路","x":514,"y":214,"w":172,"h":258,"amp":13,"period":6.3,"phase":3.6,"rotation":-5,"depth":0.62},
+ {"id":"AS18","file":"neon-scan.png","name":"青藍同心掃描環","x":574,"y":1058,"w":197,"h":296,"amp":17,"period":8.7,"phase":0.9,"rotation":8,"depth":0.76}
+]

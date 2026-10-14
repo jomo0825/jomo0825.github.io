@@ -1,0 +1,62 @@
+{
+  "blink": {
+    "x": 412,
+    "y": 280,
+    "width": 129,
+    "height": 83
+  },
+  "hairR": {
+    "x": 484,
+    "y": 328,
+    "width": 102,
+    "height": 122
+  },
+  "head": {
+    "x": 216,
+    "y": 176,
+    "width": 399,
+    "height": 276
+  },
+  "mouth": {
+    "x": 444,
+    "y": 347,
+    "width": 56,
+    "height": 38
+  },
+  "hairL": {
+    "x": 250,
+    "y": 303,
+    "width": 88,
+    "height": 132
+  },
+  "hand": {
+    "x": 724,
+    "y": 188,
+    "width": 143,
+    "height": 154
+  },
+  "torso": {
+    "x": 17,
+    "y": 45,
+    "width": 888,
+    "height": 751
+  },
+  "lowerBody": {
+    "x": 0,
+    "y": 0,
+    "width": 941,
+    "height": 1672
+  },
+  "upperArm": {
+    "x": 489,
+    "y": 393,
+    "width": 194,
+    "height": 160
+  },
+  "forearm": {
+    "x": 583,
+    "y": 275,
+    "width": 208,
+    "height": 205
+  }
+}
